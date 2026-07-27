@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,500;0,600;0,700;1,500&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; background: #eeeeec; }
+    ::selection { background: #6b7a99; color: #ffffff; }
+  </style>
+  <script src="./image-slot.js"></script>
+</helmet>
+
+<div style="width:1600px;margin:0 auto;background:linear-gradient(120deg,#3d8ded 0%,#1a66d6 45%,#0d4fb0 100%) top/100% 220px no-repeat, #f7f6f4;font-family:'Public Sans',sans-serif;position:relative;padding-bottom:56px">
+
+  <div style="padding:48px 72px 36px;position:relative">
+    <div style="position:absolute;top:48px;right:72px;display:flex;align-items:center;gap:12px">
+      <div style="font-size:13px;color:#b7c0d6;letter-spacing:.02em;text-align:right">MSBA · Carlson · University of Minnesota</div>
+      <image-slot id="umn-carlson-logo" shape="rect" radius="4" style="width:44px;height:44px" src="./assets/umn-carlson-logo.png" placeholder="UMN Carlson logo"></image-slot>
+    </div>
+    <div style="font-family:'Source Serif 4',serif;font-weight:700;font-size:50px;line-height:1.1;color:#ffffff;letter-spacing:-.01em;width:max-content">Ziqi (Ankit) Cao</div>
+    <h1 style="font-family:'Source Serif 4',serif;font-weight:700;font-size:50px;line-height:1.12;color:#ffffff;margin:22px 0 0;letter-spacing:-.01em">How can I make more money for you?</h1>
+    <div style="width:64px;height:3px;background:linear-gradient(90deg,#2f83e8,#0d4fb0);margin-top:24px"></div>
+  </div>
+
+  <div style="padding:0 72px;display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:8px">
+
+    <!-- Card 1: communication / Tableau -->
+    <div style="background:#ffffff;border-radius:6px;border-top:3px solid #1a66d6;box-shadow:0 1px 3px rgba(20,24,32,.06);padding:36px 40px 32px;display:flex;flex-direction:column">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px">
+        <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#2f83e8,#0d4fb0);color:#dbe8ff;display:flex;align-items:center;justify-content:center;font-family:'Source Serif 4',serif;font-weight:700;font-size:17px;flex-shrink:0">1</div>
+        <h2 style="font-family:'Source Serif 4',serif;font-weight:700;font-size:22px;color:#232733;margin:0;line-height:1.32">I turn hard problems into clear, actionable recommendations</h2>
+      </div>
+      
+      <p style="font-size:16px;line-height:1.68;color:#454b58;margin:0 0 20px">
+        <strong style="color: rgb(35, 39, 51);">DBS Private Banking:</strong> turned 10+ fund managers' performance data into a client-facing dashboard, supporting <strong style="color: rgb(35, 39, 51);">$2.16M</strong> in sales conversion. <br><br><strong style="color: rgb(35, 39, 51);">Public Data Tableau Dashboard:</strong> built on Kaggle's Brazilian E-Commerce dataset, visualizing sales performance data.
+      </p><div style="margin-top:auto;padding-top:14px;border-top:1px solid #ececec">
+        <a href="#" style="font-size:16px;font-weight:700;color:#1a66d6;text-decoration:none">Tableau Public Dashboards →</a>
+      </div>
+    </div>
+
+    <!-- Card 2: AI / learning -->
+    <div style="background:#ffffff;border-radius:6px;border-top:3px solid #1a66d6;box-shadow:0 1px 3px rgba(20,24,32,.06);padding:36px 40px 32px;display:flex;flex-direction:column">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px">
+        <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#2f83e8,#0d4fb0);color:#dbe8ff;display:flex;align-items:center;justify-content:center;font-family:'Source Serif 4',serif;font-weight:700;font-size:17px;flex-shrink:0">2</div>
+        <h2 style="font-family:'Source Serif 4',serif;font-weight:700;font-size:22px;color:#232733;margin:0;line-height:1.32">I never stop learning new things: right now that's AI agents and AI tooling</h2>
+      </div>
+      <p style="font-size:16px;line-height:1.68;color:#454b58;margin:0 0 10px">
+        <strong style="color:#232733">RAG Clinical Note Intelligence System:</strong> semantic search across 40,000+ MIMIC-IV notes, powered by GPT-4, cutting query time by 99%.
+      </p>
+      <p style="font-size:16px;line-height:1.68;color:#454b58;margin:0 0 20px">
+        <strong style="color:#232733">Medtronic CIX AI Guardrail:</strong> flags 99%+ of unreliable scoring outputs, replacing 3 FTE-months of manual review.
+      </p>
+      <div style="margin-top:auto;padding-top:14px;border-top:1px solid #ececec;font-size:13.5px;color:#7a7256;line-height:1.6">
+        <a href="#" style="font-size:16px;color:#1a66d6;text-decoration:none;font-weight:700">RAG Project Flyer →</a> &nbsp;·&nbsp; <a href="#" style="font-size:16px;color:#1a66d6;text-decoration:none;font-weight:700">Medtronic CIX Slide →</a>
+      </div>
+    </div>
+
+    <!-- Card 3: only the best -->
+    <div style="background:#ffffff;border-radius:6px;border-top:3px solid #1a66d6;box-shadow:0 1px 3px rgba(20,24,32,.06);padding:36px 40px 32px;display:flex;flex-direction:column">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px">
+        <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#2f83e8,#0d4fb0);color:#dbe8ff;display:flex;align-items:center;justify-content:center;font-family:'Source Serif 4',serif;font-weight:700;font-size:17px;flex-shrink:0">3</div>
+        <h2 style="font-family:'Source Serif 4',serif;font-weight:700;font-size:22px;color:#232733;margin:0;line-height:1.32">I hold myself to the highest standard, and keep pushing past it</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;flex:1">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <image-slot id="proof-gpa" shape="rounded" radius="4" style="width:100%;height:120px" placeholder="Drop GPA / rank screenshot"></image-slot>
+          <div style="text-align:center;font-size:13.5px;font-weight:600;color:#232733;line-height:1.4">GPA 3.95/4.00<br>Rank 1/40</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <image-slot id="proof-cert" shape="rounded" radius="4" style="width:100%;height:120px" placeholder="Drop CFA/FRM certificates"></image-slot>
+          <div style="text-align:center;font-size:13.5px;font-weight:600;color:#232733;line-height:1.4">CFA Level I +<br>FRM I &amp; II</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <image-slot id="proof-cover" shape="rounded" radius="4" style="width:100%;height:120px" placeholder="Drop Carlson magazine cover"></image-slot>
+          <div style="text-align:center;font-size:13.5px;font-weight:600;color:#232733;line-height:1.4">Carlson Magazine<br>Student Spotlight</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4: data skills / bid pricing -->
+    <div style="background:#ffffff;border-radius:6px;border-top:3px solid #1a66d6;box-shadow:0 1px 3px rgba(20,24,32,.06);padding:36px 40px 32px;display:flex;flex-direction:column">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px">
+        <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#2f83e8,#0d4fb0);color:#dbe8ff;display:flex;align-items:center;justify-content:center;font-family:'Source Serif 4',serif;font-weight:700;font-size:17px;flex-shrink:0">4</div>
+        <h2 style="font-family:'Source Serif 4',serif;font-weight:700;font-size:22px;color:#232733;margin:0;line-height:1.32">My data skills are rock-solid: I turn ambiguity into real dollars</h2>
+      </div>
+      <p style="font-size:16px;line-height:1.68;color:#454b58;margin:0 0 20px">
+        <strong style="color:#232733">Construction Bid Pricing Model:</strong> Random Forest + LOF anomaly detection on 3,500+ bids, uncovering <strong style="color:#232733">$4M</strong> in potential revenue and 264 hours of analyst time, at an 80% match rate.
+      </p>
+      <div style="margin-top:auto;padding-top:14px;border-top:1px solid #ececec;font-size:13.5px;color:#7a7256">
+        <a href="#" style="font-size:16px;color:#1a66d6;text-decoration:none;font-weight:700">Construction Bid Pricing Slides →</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <style>
+    body { margin: 0; background: #f7f6f4; }
+    ::selection { background: #6b7a99; color: #ffffff; }
+    a.pf-link:hover { opacity: .75; }
+  </style>
+  <script src="./image-slot.js"></script>
+  <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#1a66d6"/><text x="50" y="62" font-family="Times New Roman,serif" font-size="34" font-weight="bold" fill="#ffffff" text-anchor="middle">ZC</text></svg></template>
+</helmet>
+
+<div style="width:100%;font-family:'Times New Roman',Times,serif;color:#232733;position:relative">
+
+  <!-- HERO -->
+  <div style="background:linear-gradient(120deg,#3d8ded 0%,#1a66d6 45%,#0d4fb0 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px 24px 38px;box-sizing:border-box;position:relative;gap:18px">
+
+    <image-slot id="umn-carlson-logo" shape="rect" fit="cover" src="./assets/umn-carlson-logo.png" style="position:absolute;top:20px;right:28px;width:50px;height:50px" placeholder="UMN Carlson logo"></image-slot>
+
+    <div style="display:flex;align-items:center;gap:40px;max-width:1080px;width:100%;padding:0 64px;box-sizing:border-box">
+      <image-slot id="hero-photo" shape="circle" fit="cover" style="width:122px;height:122px;flex-shrink:0" placeholder="Drop headshot"></image-slot>
+      <div style="text-align:left">
+        <div style="font-family:'Times New Roman',Times,serif;font-weight:700;font-size:33px;color:#ffffff;letter-spacing:-.01em;white-space:nowrap;line-height:1.15">Ziqi (Ankit) Cao</div>
+        <div style="width:60px;height:1px;background:rgba(255,255,255,.5);margin:10px 0"></div>
+        <div style="font-size:21px;color:#ffffff;font-weight:600;line-height:1.35;white-space:nowrap">Helping businesses turn data into revenue.</div>
+        <div style="font-size:15px;color:#ffffff;margin-top:12px;letter-spacing:.02em;font-weight:500;line-height:1.4;max-width:560px">Data Analyst · AI Agent Builder · Business Storyteller</div>
+      </div>
+    </div>
+
+    <div style="max-width:1080px;width:100%;padding:0 64px;box-sizing:border-box;display:grid;grid-template-columns:1fr 1fr;gap:20px">
+      <div style="background:rgba(255,255,255,.12);border-radius:10px;padding:16px 24px;text-align:left">
+        <div style="font-size:14px;font-weight:700;letter-spacing:.14em;color:#a9c1ef;margin-bottom:10px">EDUCATION</div>
+        <div style="font-size:15px;font-weight:700;color:#ffffff;line-height:1.4">University of Minnesota <b>· MS in Business Analytics</b></div>
+        <div style="font-size:13.5px;font-weight:700;color:#ffffff;margin-top:3px;line-height:1.4">GPA 3.95/4.00 · Rank 1/40</div>
+        <div style="font-size:15px;color:#dbe8ff;margin-top:10px;line-height:1.4">Tongji University</div>
+        <div style="font-size:13.5px;color:#dbe8ff;margin-top:2px;line-height:1.4">B.A. in Economics</div>
+        <div style="font-size:15px;color:#dbe8ff;margin-top:10px;line-height:1.4">Renmin University</div>
+        <div style="font-size:13.5px;color:#dbe8ff;margin-top:2px;line-height:1.4">Master of Public Administration</div>
+      </div>
+      <div style="background:rgba(255,255,255,.12);border-radius:10px;padding:16px 24px;text-align:left">
+        <div style="font-size:14px;font-weight:700;letter-spacing:.14em;color:#a9c1ef;margin-bottom:10px">CERTIFICATIONS</div>
+        <div style="font-size:15px;font-weight:700;color:#ffffff;line-height:1.4">FRM Level I &amp; II</div>
+        <div style="font-size:13.5px;color:#dbe8ff;margin-top:2px;line-height:1.4">Financial Risk Manager, Certified</div>
+        <div style="font-size:15px;font-weight:700;color:#ffffff;margin-top:10px;line-height:1.4">CFA Level I</div>
+        <div style="font-size:13.5px;color:#dbe8ff;margin-top:2px;line-height:1.4">Chartered Financial Analyst</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:18px;flex-wrap:wrap;justify-content:center">
+      <a href="#" onClick="{{ openResume }}" class="pf-link" style="font-size: 15px; font-weight: 700; color: #0d4fb0; background: #ffffff; padding: 11px 26px; border-radius: 5px; text-decoration: none">Resume</a>
+      <a href="#" class="pf-link" style="font-size: 15px; font-weight: 700; color: #ffffff; background: transparent; border: 2px solid #ffffff; padding: 10px 26px; border-radius: 5px; text-decoration: none">GitHub</a>
+      <a href="https://www.linkedin.com/in/ziqi-ankit-cao" target="_blank" class="pf-link" style="font-size: 15px; font-weight: 700; color: #ffffff; background: transparent; border: 2px solid #ffffff; padding: 10px 26px; border-radius: 5px; text-decoration: none">LinkedIn</a>
+    </div>
+    <div style="position:absolute;bottom:10px;font-size:18px;color:#dbe8ff">↓</div>
+  </div>
+
+  <!-- PITCH HEADLINE -->
+  <div style="max-width:1200px;margin:0 auto;padding:64px 84px 4px;text-align:center">
+    <h1 style="font-family:'Times New Roman',Times,serif;font-weight:700;font-size:31px;line-height:1.2;margin:0;color:#232733">How can I make more money for you?</h1>
+    <div style="width:54px;height:3px;background:#1a66d6;margin:20px auto 0"></div>
+  </div>
+
+  <!-- FOUR CARDS -->
+  <div style="max-width:1200px;margin:0 auto;padding:38px 84px 76px;display:grid;grid-template-columns:1fr 1fr;gap:26px;justify-items:stretch">
+
+    <div style="background:#ffffff;border-radius:6px;border-top:3px solid #1a66d6;box-shadow:0 1px 3px rgba(20,24,32,.06);padding:24px 28px 22px;display:flex;flex-direction:column;min-height:230px">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:14px">
+        <div style="width:29px;height:29px;border-radius:50%;background:linear-gradient(135deg,#2f83e8,#0d4fb0);color:#dbe8ff;display:flex;align-items:center;justify-content:center;font-family:'Times New Roman',Times,serif;font-weight:700;font-size:14px;flex-shrink:0">1</div>
+        <h2 style="font-family:'Times New Roman',Times,serif;font-weight:700;font-size:20px;color:#232733;margin:0;line-height:1.32">Data Storyteller</h2>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center">
+        <p style="font-size:15.5px;line-height:1.62;color:#454b58;margin:0">
+          <strong style="color:rgb(35,39,51)">DBS Private Banking:</strong>&nbsp;Built a client-facing performance dashboard for 10+ fund managers, supporting <strong style="color:rgb(35,39,51)">$2.16M</strong> in sales conversion.
+        </p>
+      </div>
+      <div style="padding-top:12px;border-top:1px solid #ececec">
+        <a href="#" class="pf-link" style="font-size: 15px; font-weight: 700; color: #1a66d6; text-decoration: none">Public Tableau Dashboards →</a>
+        <div style="font-size: 13px; color: #6b7a99; margin-top: 5px">Built with Tableau using public Kaggle datasets.</div>
+      </div>
+    </div>
+
+    <div style="background: #ffffff; border-radius: 6px; border-top: 3px solid #1a66d6; box-shadow: 0 1px 3px rgba(20,24,32,.06); padding: 24px 28px 22px; display: flex; flex-direction: column; min-height: 230px">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:14px">
+        <div style="width:29px;height:29px;border-radius:50%;background:linear-gradient(135deg,#2f83e8,#0d4fb0);color:#dbe8ff;display:flex;align-items:center;justify-content:center;font-family:'Times New Roman',Times,serif;font-weight:700;font-size:14px;flex-shrink:0">2</div>
+        <h2 style="font-family:'Times New Roman',Times,serif;font-weight:700;font-size:20px;color:#232733;margin:0;line-height:1.32">Always Learning (AI Agents)</h2>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center">
+        <p style="font-size: 15.5px; line-height: 1.62; color: #454b58; margin: 0 0 8px">
+          <strong style="color:rgb(35,39,51)">RAG Clinical Note AI Agent:</strong>&nbsp;Semantic search across 40,000+ MIMIC-IV notes, powered by GPT-4, cutting query time by 99%.
+        </p>
+        <p style="font-size: 15.5px; line-height: 1.62; color: #454b58; margin: 0">
+          <strong style="color:rgb(35,39,51)">Medtronic AI Competitive Intelligence:</strong>&nbsp;Flags 99%+ of unreliable scoring outputs, replacing 3 FTE-months of manual review.
+        </p>
+      </div>
+      <div style="padding-top:12px;border-top:1px solid #ececec">
+        <a href="#" class="pf-link" style="font-size: 15px; color: #1a66d6; text-decoration: none; font-weight: 700">RAG Project Flyer →</a> &nbsp;·&nbsp; <a href="#" class="pf-link" style="font-size: 15px; color: #1a66d6; text-decoration: none; font-weight: 700">Medtronic AI Slide →</a>
+      </div>
+    </div>
+
+    <div style="background:#ffffff;border-radius:6px;border-top:3px solid #1a66d6;box-shadow:0 1px 3px rgba(20,24,32,.06);padding:24px 28px 22px;display:flex;flex-direction:column;min-height:230px">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:18px">
+        <div style="width:29px;height:29px;border-radius:50%;background:linear-gradient(135deg,#2f83e8,#0d4fb0);color:#dbe8ff;display:flex;align-items:center;justify-content:center;font-family:'Times New Roman',Times,serif;font-weight:700;font-size:14px;flex-shrink:0">3</div>
+        <h2 style="font-family:'Times New Roman',Times,serif;font-weight:700;font-size:20px;color:#232733;margin:0;line-height:1.32">Pursuing Excellence</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;flex:1;align-content:center">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div onClick="{{ openGpa }}" style="width:100%;height:92px;cursor:zoom-in">
+            <image-slot id="proof-gpa" shape="rounded" radius="4" style="width:100%;height:100%" placeholder="Drop GPA / rank screenshot"></image-slot>
+          </div>
+          <div style="text-align:center;font-size:14px;font-weight:600;color:#232733;line-height:1.4">GPA 3.95/4.00<br>Rank 1/40</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div onClick="{{ openCert }}" style="width:100%;height:92px;cursor:zoom-in">
+            <image-slot id="proof-cert" shape="rounded" radius="4" style="width:100%;height:100%" placeholder="Drop CFA/FRM certificates"></image-slot>
+          </div>
+          <div style="text-align:center;font-size:14px;font-weight:600;color:#232733;line-height:1.4">CFA Level I +<br>FRM I &amp; II</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div onClick="{{ openCover }}" style="width:100%;height:92px;cursor:zoom-in">
+            <image-slot id="proof-cover" shape="rounded" radius="4" style="width:100%;height:100%" placeholder="Drop Carlson magazine cover"></image-slot>
+          </div>
+          <div style="text-align:center;font-size:14px;font-weight:600;color:#232733;line-height:1.4">Carlson Magazine<br>Student Spotlight</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background: #ffffff; border-radius: 6px; border-top: 3px solid #1a66d6; box-shadow: 0 1px 3px rgba(20,24,32,.06); padding: 24px 28px 22px; display: flex; flex-direction: column; min-height: 230px">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:14px">
+        <div style="width:29px;height:29px;border-radius:50%;background:linear-gradient(135deg,#2f83e8,#0d4fb0);color:#dbe8ff;display:flex;align-items:center;justify-content:center;font-family:'Times New Roman',Times,serif;font-weight:700;font-size:14px;flex-shrink:0">4</div>
+        <h2 style="font-family:'Times New Roman',Times,serif;font-weight:700;font-size:20px;color:#232733;margin:0;line-height:1.32">Strong Analytical Foundation</h2>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center">
+        <p style="font-size:15.5px;line-height:1.62;color:#454b58;margin:0">
+          <strong style="color:#232733">Construction Bid Pricing Model:</strong> Random Forest + LOF anomaly detection on 3,500+ bids, uncovering <strong style="color:#232733">$4M</strong> in potential revenue and 264 hours of analyst time, at an 80% match rate.
+        </p>
+      </div>
+      <div style="padding-top:12px;border-top:1px solid #ececec">
+        <a href="#" class="pf-link" style="font-size: 15px; color: #1a66d6; text-decoration: none; font-weight: 700">Construction Bid Pricing Slides →</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SELECTED PROJECTS -->
+  <div style="background:#3b4a8c;padding:64px 84px 76px">
+    <div style="max-width:1200px;margin:0 auto">
+      <h2 style="font-family: 'Times New Roman',Times,serif; font-weight: 700; font-size: 34px; color: #ffffff; margin: 0 0 40px; text-align: center">Selected Projects</h2>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:28px">
+
+        <div style="background:#ffffff;border-radius:6px;padding:24px 28px;display:flex;flex-direction:column">
+          <div style="font-size:12px;letter-spacing:.08em;color:#6b7a99;font-weight:700;margin-bottom:8px">PROJECT 1</div>
+          <div style="font-family: 'Times New Roman',Times,serif; font-weight: 700; font-size: 20px; color: #232733; margin-bottom: 10px">Medtronic AI Competitive Intelligence</div>
+          <div style="font-size: 17px; font-weight: 700; color: #1a66d6; margin-bottom: 16px">$2M Intelligence Value</div>
+          <a href="#" class="pf-link" style="margin-top: auto; font-size: 15px; font-weight: 700; color: #232733; text-decoration: none">View Slides →</a>
+        </div>
+
+        <div style="background:#ffffff;border-radius:6px;padding:24px 28px;display:flex;flex-direction:column">
+          <div style="font-size:12px;letter-spacing:.08em;color:#6b7a99;font-weight:700;margin-bottom:8px">PROJECT 2</div>
+          <div style="font-family: 'Times New Roman',Times,serif; font-weight: 700; font-size: 20px; color: #232733; margin-bottom: 10px">DBS Portfolio Recommendation Analytics</div>
+          <div style="font-size: 17px; font-weight: 700; color: #1a66d6; margin-bottom: 16px">$2.16M Client Sales</div>
+          <a href="#" class="pf-link" style="margin-top: auto; font-size: 15px; font-weight: 700; color: #232733; text-decoration: none">View Slides →</a>
+        </div>
+
+        <div style="background:#ffffff;border-radius:6px;padding:24px 28px;display:flex;flex-direction:column">
+          <div style="font-size:12px;letter-spacing:.08em;color:#6b7a99;font-weight:700;margin-bottom:8px">PROJECT 3</div>
+          <div style="font-family: 'Times New Roman',Times,serif; font-weight: 700; font-size: 20px; color: #232733; margin-bottom: 10px">RAG Clinical Note AI Agent</div>
+          <div style="font-size: 17px; font-weight: 700; color: #1a66d6; margin-bottom: 16px">99% Faster Retrieval</div>
+          <div style="margin-top:auto;display:flex;gap:20px"><a href="#" class="pf-link" style="font-size: 15px; font-weight: 700; color: #232733; text-decoration: none">View Demo →</a><a href="#" class="pf-link" style="font-size: 15px; font-weight: 700; color: #232733; text-decoration: none">GitHub →</a></div>
+        </div>
+
+        <div style="background:#ffffff;border-radius:6px;padding:24px 28px;display:flex;flex-direction:column">
+          <div style="font-size:12px;letter-spacing:.08em;color:#6b7a99;font-weight:700;margin-bottom:8px">PROJECT 4</div>
+          <div style="font-family: 'Times New Roman',Times,serif; font-weight: 700; font-size: 20px; color: #232733; margin-bottom: 10px">Construction Bid Strategy Analytics</div>
+          <div style="font-size: 17px; font-weight: 700; color: #1a66d6; margin-bottom: 16px">$4M Revenue Opportunity</div>
+          <div style="margin-top:auto;display:flex;gap:20px"><a href="#" class="pf-link" style="font-size: 15px; font-weight: 700; color: #232733; text-decoration: none">View Slides →</a></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div onClick="{{ closeLightbox }}" style="position:absolute;top:{{ lightboxTop }}px;left:0;width:100%;height:100vh;background:rgba(10,12,20,.92);z-index:9999;display:{{ lightboxDisplay }};flex-direction:column;align-items:center;justify-content:{{ lightboxAlign }};cursor:zoom-out;padding:24px 8px;box-sizing:border-box;overflow-y:auto;text-align:center;scrollbar-gutter:stable both-edges">
+    <button onClick="{{ closeLightbox }}" style="position:sticky;top:0;align-self:flex-end;margin-right:12px;width:44px;height:44px;flex-shrink:0;border-radius:50%;border:none;background:rgba(255,255,255,.18);color:#ffffff;font-size:22px;line-height:1;cursor:pointer;z-index:10000">✕</button>
+    <img ref="{{ lightboxImgRef }}" onClick="{{ stopPropagation }}" style="width:{{ lightboxImgWidth }};height:auto;max-height:{{ lightboxImgMaxHeight }};object-fit:contain;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.5);cursor:default;display:block;flex-shrink:0">
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lightboxOpen: false };
+  imgRef = React.createRef();
+
+  openLightbox(id) {
+    const el = document.getElementById(id);
+    const img = el && el.shadowRoot && el.shadowRoot.querySelector('.frame img');
+    const src = img && img.getAttribute('src');
+    if (src && this.imgRef.current) {
+      this.imgRef.current.src = src;
+      this.setState({ lightboxOpen: true, lightboxKind: 'photo', lightboxTop: Math.round(window.scrollY) });
+    }
+  }
+
+  openResume() {
+    if (this.imgRef.current) {
+      this.imgRef.current.src = './assets/resume-preview.png';
+      this.setState({ lightboxOpen: true, lightboxKind: 'doc', lightboxTop: Math.round(window.scrollY) });
+    }
+  }
+
+  renderVals() {
+    const isDoc = this.state.lightboxKind === 'doc';
+    return {
+      lightboxDisplay: this.state.lightboxOpen ? 'flex' : 'none',
+      lightboxTop: this.state.lightboxTop || 0,
+      lightboxAlign: isDoc ? 'flex-start' : 'center',
+      lightboxImgWidth: isDoc ? 'min(97%,2200px)' : 'min(85%,900px)',
+      lightboxImgMaxHeight: isDoc ? 'none' : '88vh',
+      lightboxImgRef: this.imgRef,
+      closeLightbox: () => this.setState({ lightboxOpen: false }),
+      openGpa: () => this.openLightbox('proof-gpa'),
+      openCert: () => this.openLightbox('proof-cert'),
+      openCover: () => this.openLightbox('proof-cover'),
+      openResume: () => this.openResume(),
+      stopPropagation: (e) => e.stopPropagation(),
+    };
+  }
+}
+</script>
+</body>
+</html>
