@@ -970,6 +970,7 @@
 
       <a
         href="mailto:CAO00520@umn.edu"
+        onClick="{{ openEmail }}"
         class="pf-link"
         style="display:flex;align-items:center;justify-content:center;min-width:145px;font-size:20px;font-weight:700;color:#ffffff;background:transparent;border:2px solid #ffffff;padding:11px 32px;border-radius:5px;text-decoration:none;box-sizing:border-box">
         Email Me
@@ -1956,6 +1957,13 @@ class Component extends DCLogic {
       this.state.slidesZoom || 1;
 
     return {
+      openEmail:
+        (e) => {
+          e.preventDefault();
+          window.location.href =
+            "mailto:CAO00520@umn.edu";
+        },
+
       lightboxDisplay:
         this.state.lightboxOpen
           ? "block"
@@ -2009,7 +2017,7 @@ class Component extends DCLogic {
           e.preventDefault();
           e.stopPropagation();
           this.openSlides(
-            "./assets/Construction%20Bidding%20Project%20Slides.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH",
+            "./assets/Construction%20Bidding%20Project%20Slides.pdf#page=1&view=Fit&toolbar=0&navpanes=0&scrollbar=0",
             "Construction Bidding Project Slides"
           );
         },
@@ -2019,7 +2027,7 @@ class Component extends DCLogic {
           e.preventDefault();
           e.stopPropagation();
           this.openSlides(
-            "./assets/CIX%20Project%20Slides.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH",
+            "./assets/CIX%20Project%20Slides.pdf#page=1&view=Fit&toolbar=0&navpanes=0&scrollbar=0",
             "Healthcare AI Competitive Intelligence Slides"
           );
         },
@@ -2029,7 +2037,7 @@ class Component extends DCLogic {
           e.preventDefault();
           e.stopPropagation();
           this.openSlides(
-            "./assets/Clinical%20Note%20Flyer.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH",
+            "./assets/Clinical%20Note%20Flyer.pdf#page=1&view=Fit&toolbar=0&navpanes=0&scrollbar=0",
             "RAG Project Flyer"
           );
         },
