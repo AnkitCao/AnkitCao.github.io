@@ -1692,19 +1692,17 @@ class Component extends DCLogic {
       slidesSrc: src,
       slidesTitle: title,
       slidesZoom: 1
-    });
-
-    document.body.style.overflow = "hidden";
-
-    if (initialZoom !== 1) {
-      requestAnimationFrame(() => {
+    }, () => {
+      if (initialZoom !== 1) {
         this.setZoomAroundViewportCenter(
           "slides-overlay",
           "slidesZoom",
           initialZoom
         );
-      });
-    }
+      }
+    });
+
+    document.body.style.overflow = "hidden";
   }
 
   closeSlides() {
