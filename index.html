@@ -426,6 +426,12 @@
       justify-content: flex-start;
       padding: 76px 5vw 42px;
       box-sizing: border-box;
+      cursor: grab;
+      user-select: none;
+    }
+
+    .slides-scroll-area.is-panning {
+      cursor: grabbing;
     }
 
     .slides-modal {
@@ -458,6 +464,7 @@
       flex: 1;
       border: none;
       background: #f1f3f6;
+      pointer-events: none;
     }
 
     /* VIDEO MODAL */
@@ -653,7 +660,12 @@
       justify-content: center;
       padding: 92px 50px 60px;
       box-sizing: border-box;
-      cursor: default;
+      cursor: grab;
+      user-select: none;
+    }
+
+    .lightbox-scroll-area.is-panning {
+      cursor: grabbing;
     }
 
     .lightbox-image {
@@ -1371,7 +1383,11 @@
 
   <div
     class="slides-scroll-area"
-    onClick="{{ stopPropagation }}">
+    onClick="{{ stopPropagation }}"
+    onMouseDown="{{ startPanSlides }}"
+    onMouseMove="{{ movePan }}"
+    onMouseUp="{{ endPan }}"
+    onMouseLeave="{{ endPan }}">
 
     <div
       class="slides-modal"
@@ -1532,7 +1548,11 @@
 
   <div
     class="lightbox-scroll-area"
-    onClick="{{ stopPropagation }}">
+    onClick="{{ stopPropagation }}"
+    onMouseDown="{{ startPanLightbox }}"
+    onMouseMove="{{ movePan }}"
+    onMouseUp="{{ endPan }}"
+    onMouseLeave="{{ endPan }}">
 
     <img
       ref="{{ lightboxImgRef }}"
@@ -1565,6 +1585,51 @@ class Component extends DCLogic {
   videoRef = React.createRef();
   slidesOverlayRef = React.createRef();
   videoOverlayRef = React.createRef();
+
+  panOverlay = null;
+  panSurface = null;
+  panStartX = 0;
+  panStartY = 0;
+  panStartScrollLeft = 0;
+  panStartScrollTop = 0;
+
+  startPan(e, overlayClass) {
+    if (!e || e.button !== 0) return;
+    const overlay = document.querySelector("." + overlayClass);
+    if (!overlay || !e.currentTarget) return;
+    this.panOverlay = overlay;
+    this.panSurface = e.currentTarget;
+    this.panStartX = e.clientX;
+    this.panStartY = e.clientY;
+    this.panStartScrollLeft = overlay.scrollLeft;
+    this.panStartScrollTop = overlay.scrollTop;
+    this.panSurface.classList.add("is-panning");
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
+  movePan(e) {
+    if (!this.panOverlay) return;
+    if (e.buttons !== 1) {
+      this.endPan(e);
+      return;
+    }
+    this.panOverlay.scrollLeft =
+      this.panStartScrollLeft - (e.clientX - this.panStartX);
+    this.panOverlay.scrollTop =
+      this.panStartScrollTop - (e.clientY - this.panStartY);
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
+  endPan(e) {
+    if (this.panSurface) {
+      this.panSurface.classList.remove("is-panning");
+    }
+    this.panOverlay = null;
+    this.panSurface = null;
+    if (e) e.stopPropagation();
+  }
 
   openLightbox(id) {
     const el = document.getElementById(id);
@@ -2068,6 +2133,18 @@ class Component extends DCLogic {
 
       openCover:
         () => this.openLightbox("proof-cover"),
+
+      startPanSlides:
+        (e) => this.startPan(e, "slides-overlay"),
+
+      startPanLightbox:
+        (e) => this.startPan(e, "lightbox-overlay"),
+
+      movePan:
+        (e) => this.movePan(e),
+
+      endPan:
+        (e) => this.endPan(e),
 
       stopPropagation:
         (e) => e.stopPropagation()
