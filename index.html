@@ -1691,10 +1691,20 @@ class Component extends DCLogic {
       slidesOpen: true,
       slidesSrc: src,
       slidesTitle: title,
-      slidesZoom: initialZoom
+      slidesZoom: 1
     });
 
     document.body.style.overflow = "hidden";
+
+    if (initialZoom !== 1) {
+      requestAnimationFrame(() => {
+        this.setZoomAroundViewportCenter(
+          "slides-overlay",
+          "slidesZoom",
+          initialZoom
+        );
+      });
+    }
   }
 
   closeSlides() {
