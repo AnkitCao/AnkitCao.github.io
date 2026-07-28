@@ -973,25 +973,64 @@
 
   </div>
 
-  <!-- LIGHTBOX -->
 
-  <div
+ <!-- IMAGE LIGHTBOX -->
+<div
+  onClick="{{ closeLightbox }}"
+  style="
+    position:fixed;
+    inset:0;
+    width:100vw;
+    height:100vh;
+    background:rgba(10,12,20,0.92);
+    z-index:9999;
+    display:{{ lightboxDisplay }};
+    align-items:center;
+    justify-content:center;
+    cursor:zoom-out;
+    padding:24px;
+    box-sizing:border-box;
+    overflow:auto;
+    text-align:center;
+    zoom:1.4925373134;
+  ">
+
+  <button
     onClick="{{ closeLightbox }}"
-    style="position:absolute;top:{{ lightboxTop }}px;left:0;width:100%;height:100vh;background:rgba(10,12,20,0.92);z-index:9999;display:{{ lightboxDisplay }};flex-direction:column;align-items:center;justify-content:center;cursor:zoom-out;padding:24px 8px;box-sizing:border-box;overflow-y:auto;text-align:center;scrollbar-gutter:stable both-edges">
+    style="
+      position:absolute;
+      top:18px;
+      right:18px;
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      border:none;
+      background:rgba(255,255,255,0.18);
+      color:#ffffff;
+      font-size:22px;
+      line-height:1;
+      cursor:pointer;
+      z-index:10000;
+    ">
+    ✕
+  </button>
 
-    <button
-      onClick="{{ closeLightbox }}"
-      style="position:sticky;top:0;align-self:flex-end;margin-right:12px;width:44px;height:44px;flex-shrink:0;border-radius:50%;border:none;background:rgba(255,255,255,0.18);color:#ffffff;font-size:22px;line-height:1;cursor:pointer;z-index:10000">
-      ✕
-    </button>
+  <img
+    ref="{{ lightboxImgRef }}"
+    onClick="{{ stopPropagation }}"
+    style="
+      width:auto;
+      max-width:88vw;
+      height:auto;
+      max-height:88vh;
+      object-fit:contain;
+      border-radius:8px;
+      box-shadow:0 20px 60px rgba(0,0,0,0.5);
+      cursor:default;
+      display:block;
+    ">
 
-    <img
-      ref="{{ lightboxImgRef }}"
-      onClick="{{ stopPropagation }}"
-      style="width:min(85%,900px);height:auto;max-height:88vh;object-fit:contain;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,0.5);cursor:default;display:block;flex-shrink:0">
-
-  </div>
-
+</div>
 </div>
 
 </x-dc>
