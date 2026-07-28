@@ -969,8 +969,9 @@
       </a>
 
       <a
-        href="mailto:CAO00520@umn.edu"
-        onClick="{{ openEmail }}"
+        href="https://mail.google.com/mail/?view=cm&fs=1&to=CAO00520%40umn.edu"
+        target="_blank"
+        rel="noopener noreferrer"
         class="pf-link"
         style="display:flex;align-items:center;justify-content:center;min-width:145px;font-size:20px;font-weight:700;color:#ffffff;background:transparent;border:2px solid #ffffff;padding:11px 32px;border-radius:5px;text-decoration:none;box-sizing:border-box">
         Email Me
@@ -1957,13 +1958,6 @@ class Component extends DCLogic {
       this.state.slidesZoom || 1;
 
     return {
-      openEmail:
-        (e) => {
-          e.preventDefault();
-          window.location.href =
-            "mailto:CAO00520@umn.edu";
-        },
-
       lightboxDisplay:
         this.state.lightboxOpen
           ? "block"
