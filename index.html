@@ -423,15 +423,16 @@
       min-height: 100%;
       display: flex;
       align-items: flex-start;
-      justify-content: center;
+      justify-content: flex-start;
       padding: 76px 42px 42px;
       box-sizing: border-box;
     }
 
     .slides-modal {
-      width: min(94vw, 1400px);
+      width: 92vw;
       height: calc(100vh - 118px);
-      min-height: 520px;
+      min-height: 0;
+      flex-shrink: 0;
       display: flex;
       flex-direction: column;
       background: #ffffff;
@@ -1336,10 +1337,42 @@
   </button>
 
   <div
+    class="lightbox-toolbar"
+    onClick="{{ stopPropagation }}">
+
+    <button
+      class="lightbox-tool-button"
+      onClick="{{ zoomOutSlides }}"
+      aria-label="Zoom out slides">
+      −
+    </button>
+
+    <div class="lightbox-zoom-label">
+      {{ slidesZoomLabel }}
+    </div>
+
+    <button
+      class="lightbox-tool-button"
+      onClick="{{ zoomInSlides }}"
+      aria-label="Zoom in slides">
+      +
+    </button>
+
+    <button
+      class="lightbox-tool-button lightbox-reset-button"
+      onClick="{{ resetSlidesZoom }}">
+      Reset
+    </button>
+
+  </div>
+
+  <div
     class="slides-scroll-area"
     onClick="{{ stopPropagation }}">
 
-    <div class="slides-modal">
+    <div
+      class="slides-modal"
+      style="width:{{ slidesModalWidth }};height:{{ slidesModalHeight }}">
 
       <h2 class="slides-title">
         {{ slidesTitle }}
@@ -1520,7 +1553,8 @@ class Component extends DCLogic {
     videoZoom: 1,
     slidesOpen: false,
     slidesSrc: "",
-    slidesTitle: ""
+    slidesTitle: "",
+    slidesZoom: 1
   };
 
   imgRef = React.createRef();
@@ -1571,7 +1605,8 @@ class Component extends DCLogic {
     this.setState({
       slidesOpen: true,
       slidesSrc: src,
-      slidesTitle: title
+      slidesTitle: title,
+      slidesZoom: 1
     });
 
     document.body.style.overflow = "hidden";
@@ -1581,10 +1616,35 @@ class Component extends DCLogic {
     this.setState({
       slidesOpen: false,
       slidesSrc: "",
-      slidesTitle: ""
+      slidesTitle: "",
+      slidesZoom: 1
     });
 
     document.body.style.overflow = "";
+  }
+
+  zoomInSlides() {
+    const currentZoom =
+      this.state.slidesZoom || 1;
+
+    this.setState({
+      slidesZoom: Math.min(currentZoom + 0.25, 3)
+    });
+  }
+
+  zoomOutSlides() {
+    const currentZoom =
+      this.state.slidesZoom || 1;
+
+    this.setState({
+      slidesZoom: Math.max(currentZoom - 0.25, 0.5)
+    });
+  }
+
+  resetSlidesZoom() {
+    this.setState({
+      slidesZoom: 1
+    });
   }
 
   openFlyer() {
@@ -1740,6 +1800,9 @@ class Component extends DCLogic {
     const videoZoom =
       this.state.videoZoom || 1;
 
+    const slidesZoom =
+      this.state.slidesZoom || 1;
+
     return {
       lightboxDisplay:
         this.state.lightboxOpen
@@ -1761,6 +1824,33 @@ class Component extends DCLogic {
 
       slidesTitle:
         this.state.slidesTitle,
+
+      slidesZoomLabel:
+        `${Math.round(slidesZoom * 100)}%`,
+
+      slidesModalWidth:
+        `${92 * slidesZoom}vw`,
+
+      slidesModalHeight:
+        `calc(${Math.round(100 * slidesZoom)}vh - ${Math.round(118 * slidesZoom)}px)`,
+
+      zoomInSlides:
+        (e) => {
+          e.stopPropagation();
+          this.zoomInSlides();
+        },
+
+      zoomOutSlides:
+        (e) => {
+          e.stopPropagation();
+          this.zoomOutSlides();
+        },
+
+      resetSlidesZoom:
+        (e) => {
+          e.stopPropagation();
+          this.resetSlidesZoom();
+        },
 
       openConstructionSlides:
         (e) => {
