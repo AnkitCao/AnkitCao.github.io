@@ -1203,7 +1203,7 @@
 class Component extends DCLogic {
   state = {
     lightboxOpen: false,
-    lightboxZoom: id === "proof-cover" ? 1.75 : 1,
+    lightboxZoom: 1,
     lightboxBaseWidth: 62
   };
 
@@ -1234,7 +1234,7 @@ class Component extends DCLogic {
 
     this.setState({
       lightboxOpen: true,
-      lightboxZoom: 1,
+      lightboxZoom: id === "proof-cover" ? 1.75 : 1,
       lightboxBaseWidth: baseWidth
     });
 
