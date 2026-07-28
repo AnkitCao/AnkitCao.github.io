@@ -1203,7 +1203,7 @@
 class Component extends DCLogic {
   state = {
     lightboxOpen: false,
-    lightboxZoom: 1,
+    lightboxZoom: id === "proof-cover" ? 1.75 : 1,
     lightboxBaseWidth: 62
   };
 
