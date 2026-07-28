@@ -404,6 +404,70 @@
       white-space: nowrap;
     }
 
+    /* VIDEO MODAL */
+
+    .video-demo-button {
+      margin: 0;
+      padding: 0;
+      border: none;
+      background: transparent;
+      font-family: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .video-demo-button:hover {
+      opacity: 0.75;
+    }
+
+    .video-overlay {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(10,12,20,0.94);
+      z-index: 99999;
+      overflow: auto;
+      box-sizing: border-box;
+      overscroll-behavior: contain;
+    }
+
+    .video-scroll-area {
+      min-width: 100%;
+      min-height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 92px 50px 60px;
+      box-sizing: border-box;
+    }
+
+    .video-modal {
+      width: min(92vw, 1200px);
+      padding: 24px;
+      background: #ffffff;
+      border-radius: 8px;
+      box-sizing: border-box;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.58);
+    }
+
+    .video-title {
+      margin: 0 0 18px;
+      color: #232733;
+      font-family: "Times New Roman", Times, serif;
+      font-size: 28px;
+      line-height: 1.25;
+      text-align: center;
+    }
+
+    .demo-video {
+      display: block;
+      width: 100%;
+      max-height: calc(100vh - 190px);
+      background: #000000;
+      border-radius: 6px;
+    }
+
     /* LIGHTBOX */
 
     .lightbox-overlay {
@@ -621,8 +685,23 @@
         height: 40px;
       }
 
-      .lightbox-scroll-area {
+      .lightbox-scroll-area,
+      .video-scroll-area {
         padding: 75px 18px 35px;
+      }
+
+      .video-modal {
+        width: 100%;
+        padding: 14px;
+      }
+
+      .video-title {
+        font-size: 22px;
+        margin-bottom: 12px;
+      }
+
+      .demo-video {
+        max-height: calc(100vh - 135px);
       }
     }
   </style>
@@ -1078,13 +1157,12 @@
           </div>
           <div style="margin-top:auto;display:flex;gap:24px">
 
-  <a
-    href="./assets/Demo%20of%20RAG%20Clinical%20Note%20AI%20Agent.mov"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="pf-link project-link">
+  <button
+    type="button"
+    onClick="{{ openVideo }}"
+    class="pf-link project-link video-demo-button">
     View Demo →
-  </a>
+  </button>
 
   <a
     href="https://github.com/Eunggseo/big_data_team1"
@@ -1131,9 +1209,50 @@
 </div>
 
 <!--
-  LIGHTBOX 必须放在 page-wrapper 外面。
+  VIDEO MODAL 和 LIGHTBOX 必须放在 page-wrapper 外面。
   这样不会受到 page-wrapper 的 zoom:0.77 影响。
 -->
+
+<div
+  class="video-overlay"
+  onClick="{{ closeVideo }}"
+  style="display:{{ videoDisplay }}">
+
+  <button
+    type="button"
+    class="lightbox-close-button"
+    onClick="{{ closeVideo }}"
+    aria-label="Close video">
+    ✕
+  </button>
+
+  <div
+    class="video-scroll-area"
+    onClick="{{ stopPropagation }}">
+
+    <div class="video-modal">
+
+      <h2 class="video-title">
+        RAG Clinical Note AI Agent Demo
+      </h2>
+
+      <video
+        ref="{{ videoRef }}"
+        class="demo-video"
+        controls
+        preload="metadata"
+        playsinline>
+        <source
+          src="./assets/Demo%20of%20RAG%20Clinical%20Note%20AI%20Agent.mp4"
+          type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+
+    </div>
+
+  </div>
+
+</div>
 
 <div
   class="lightbox-overlay"
@@ -1204,10 +1323,12 @@ class Component extends DCLogic {
   state = {
     lightboxOpen: false,
     lightboxZoom: 1,
-    lightboxBaseWidth: 62
+    lightboxBaseWidth: 62,
+    videoOpen: false
   };
 
   imgRef = React.createRef();
+  videoRef = React.createRef();
 
   openLightbox(id) {
     const el = document.getElementById(id);
@@ -1245,6 +1366,29 @@ class Component extends DCLogic {
     this.setState({
       lightboxOpen: false,
       lightboxZoom: 1
+    });
+
+    document.body.style.overflow = "";
+  }
+
+  openVideo() {
+    this.setState({
+      videoOpen: true
+    });
+
+    document.body.style.overflow = "hidden";
+  }
+
+  closeVideo() {
+    const video =
+      this.videoRef.current;
+
+    if (video) {
+      video.pause();
+    }
+
+    this.setState({
+      videoOpen: false
     });
 
     document.body.style.overflow = "";
@@ -1292,6 +1436,32 @@ class Component extends DCLogic {
         this.state.lightboxOpen
           ? "block"
           : "none",
+
+      videoDisplay:
+        this.state.videoOpen
+          ? "block"
+          : "none",
+
+      videoRef:
+        this.videoRef,
+
+      openVideo:
+        (e) => {
+          if (e) {
+            e.stopPropagation();
+          }
+
+          this.openVideo();
+        },
+
+      closeVideo:
+        (e) => {
+          if (e) {
+            e.stopPropagation();
+          }
+
+          this.closeVideo();
+        },
 
       lightboxImgWidth:
         `${baseWidth * zoom}vw`,
