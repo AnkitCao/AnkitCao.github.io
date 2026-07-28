@@ -404,6 +404,61 @@
       white-space: nowrap;
     }
 
+    /* SLIDES MODAL */
+
+    .slides-overlay {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(10,12,20,0.94);
+      z-index: 99999;
+      overflow: auto;
+      box-sizing: border-box;
+      overscroll-behavior: contain;
+    }
+
+    .slides-scroll-area {
+      min-width: 100%;
+      min-height: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 76px 42px 42px;
+      box-sizing: border-box;
+    }
+
+    .slides-modal {
+      width: min(94vw, 1400px);
+      height: calc(100vh - 118px);
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      background: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.58);
+    }
+
+    .slides-title {
+      margin: 0;
+      padding: 17px 74px 15px;
+      color: #232733;
+      font-family: "Times New Roman", Times, serif;
+      font-size: 25px;
+      line-height: 1.25;
+      text-align: center;
+      border-bottom: 1px solid #e2e5eb;
+      background: #ffffff;
+    }
+
+    .slides-frame {
+      width: 100%;
+      flex: 1;
+      border: none;
+      background: #f1f3f6;
+    }
+
     /* VIDEO MODAL */
 
     .video-demo-button {
@@ -998,13 +1053,16 @@
         <div class="dual-links">
 
     <a
-  href="https://github.com/Eunggseo/big_data_team1/blob/main/flier.pdf"
-  target="_blank"
-  rel="noopener noreferrer"
-  class="pf-link feature-link">
-  RAG Project Flyer →
-</a>
-          <a href="#" class="pf-link feature-link">
+      href="#rag-project-flyer"
+      onClick="{{ openFlyer }}"
+      class="pf-link feature-link">
+      RAG Project Flyer →
+    </a>
+
+          <a
+            href="#healthcare-ai-slides"
+            onClick="{{ openCixSlides }}"
+            class="pf-link feature-link">
             Healthcare AI Slides →
           </a>
 
@@ -1123,7 +1181,10 @@
 
       <div class="feature-footer">
 
-        <a href="#" class="pf-link feature-link">
+        <a
+          href="#construction-slides"
+          onClick="{{ openConstructionSlides }}"
+          class="pf-link feature-link">
           Construction Bid Pricing Slides →
         </a>
 
@@ -1237,7 +1298,10 @@
             $4M Revenue Opportunity
           </div>
 
-          <a href="#" class="pf-link project-link">
+          <a
+            href="#construction-slides"
+            onClick="{{ openConstructionSlides }}"
+            class="pf-link project-link">
             View Slides →
           </a>
 
@@ -1252,9 +1316,47 @@
 </div>
 
 <!--
-  VIDEO MODAL 和 LIGHTBOX 必须放在 page-wrapper 外面。
+  VIDEO MODAL、SLIDES MODAL 和 LIGHTBOX 必须放在 page-wrapper 外面。
   这样不会受到 page-wrapper 的 zoom:0.77 影响。
 -->
+
+<!-- SLIDES MODAL -->
+
+<div
+  class="slides-overlay"
+  onClick="{{ closeSlides }}"
+  style="display:{{ slidesDisplay }}">
+
+  <button
+    type="button"
+    class="lightbox-close-button"
+    onClick="{{ closeSlides }}"
+    aria-label="Close slides">
+    ✕
+  </button>
+
+  <div
+    class="slides-scroll-area"
+    onClick="{{ stopPropagation }}">
+
+    <div class="slides-modal">
+
+      <h2 class="slides-title">
+        {{ slidesTitle }}
+      </h2>
+
+      <iframe
+        class="slides-frame"
+        src="{{ slidesSrc }}"
+        title="{{ slidesTitle }}"
+        allowfullscreen>
+      </iframe>
+
+    </div>
+
+  </div>
+
+</div>
 
 <div
   class="video-overlay"
@@ -1415,7 +1517,10 @@ class Component extends DCLogic {
     lightboxBaseWidth: 62,
     videoOpen: false,
     videoPlaying: false,
-    videoZoom: 1
+    videoZoom: 1,
+    slidesOpen: false,
+    slidesSrc: "",
+    slidesTitle: ""
   };
 
   imgRef = React.createRef();
@@ -1460,6 +1565,43 @@ class Component extends DCLogic {
     });
 
     document.body.style.overflow = "";
+  }
+
+  openSlides(src, title) {
+    this.setState({
+      slidesOpen: true,
+      slidesSrc: src,
+      slidesTitle: title
+    });
+
+    document.body.style.overflow = "hidden";
+  }
+
+  closeSlides() {
+    this.setState({
+      slidesOpen: false,
+      slidesSrc: "",
+      slidesTitle: ""
+    });
+
+    document.body.style.overflow = "";
+  }
+
+  openFlyer() {
+    if (!this.imgRef.current) {
+      return;
+    }
+
+    this.imgRef.current.src =
+      "./assets/Clinical%20Note%20Flyer.png";
+
+    this.setState({
+      lightboxOpen: true,
+      lightboxZoom: 1,
+      lightboxBaseWidth: 50
+    });
+
+    document.body.style.overflow = "hidden";
   }
 
   openVideo() {
@@ -1608,6 +1750,52 @@ class Component extends DCLogic {
         this.state.videoOpen
           ? "block"
           : "none",
+
+      slidesDisplay:
+        this.state.slidesOpen
+          ? "block"
+          : "none",
+
+      slidesSrc:
+        this.state.slidesSrc,
+
+      slidesTitle:
+        this.state.slidesTitle,
+
+      openConstructionSlides:
+        (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          this.openSlides(
+            "https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Fankitcao.github.io%2Fassets%2FConstruction%2520Bidding%2520Project%2520Slides.pptx",
+            "Construction Bidding Project Slides"
+          );
+        },
+
+      openCixSlides:
+        (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          this.openSlides(
+            "https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Fankitcao.github.io%2Fassets%2FCIX%2520Project%2520Slides.pptx",
+            "Healthcare AI Competitive Intelligence Slides"
+          );
+        },
+
+      openFlyer:
+        (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          this.openFlyer();
+        },
+
+      closeSlides:
+        (e) => {
+          if (e) {
+            e.stopPropagation();
+          }
+          this.closeSlides();
+        },
 
       videoRef:
         this.videoRef,
