@@ -270,15 +270,12 @@
       min-width: 0;
     }
 
-    /* 原15.5px，放大约10% */
-
-   
     .feature-text {
-    font-size: 19px;
-    line-height: 1.58;
-    color: #454b58;
-    margin: 0;
-}
+      font-size: 19px;
+      line-height: 1.58;
+      color: #454b58;
+      margin: 0;
+    }
 
     .feature-text + .feature-text {
       margin-top: 8px;
@@ -344,12 +341,11 @@
 
     /* SELECTED PROJECTS */
 
-
     .projects-section {
-  background: #3b4a8c;
-  padding: 32px 36px 76px;
-  box-sizing: border-box;
-}
+      background: #3b4a8c;
+      padding: 32px 36px 76px;
+      box-sizing: border-box;
+    }
 
     .projects-container {
       max-width: 1300px;
@@ -357,11 +353,11 @@
     }
 
     .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 610px);
-    justify-content: center;
-    gap: 28px;
-}
+      display: grid;
+      grid-template-columns: repeat(2, 610px);
+      justify-content: center;
+      gap: 28px;
+    }
 
     .project-card {
       background: #ffffff;
@@ -407,6 +403,115 @@
       white-space: nowrap;
     }
 
+    /* LIGHTBOX */
+
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(10,12,20,0.94);
+      z-index: 99999;
+      overflow: auto;
+      box-sizing: border-box;
+      cursor: zoom-out;
+      overscroll-behavior: contain;
+    }
+
+    .lightbox-toolbar {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100002;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 28px;
+      background: rgba(35,39,51,0.92);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.38);
+      cursor: default;
+      font-family: Arial, sans-serif;
+    }
+
+    .lightbox-tool-button {
+      min-width: 42px;
+      height: 42px;
+      padding: 0 12px;
+      border: none;
+      border-radius: 21px;
+      background: rgba(255,255,255,0.16);
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1;
+      cursor: pointer;
+      box-sizing: border-box;
+    }
+
+    .lightbox-tool-button:hover {
+      background: rgba(255,255,255,0.27);
+    }
+
+    .lightbox-reset-button {
+      font-size: 14px;
+      padding: 0 16px;
+    }
+
+    .lightbox-zoom-label {
+      min-width: 62px;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .lightbox-close-button {
+      position: fixed;
+      top: 18px;
+      right: 20px;
+      z-index: 100003;
+      width: 46px;
+      height: 46px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      color: #ffffff;
+      font-size: 23px;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.28);
+    }
+
+    .lightbox-close-button:hover {
+      background: rgba(255,255,255,0.32);
+    }
+
+    .lightbox-scroll-area {
+      min-width: 100%;
+      min-height: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 92px 50px 60px;
+      box-sizing: border-box;
+      cursor: default;
+    }
+
+    .lightbox-image {
+      height: auto;
+      max-width: none;
+      max-height: none;
+      object-fit: contain;
+      display: block;
+      flex-shrink: 0;
+      border-radius: 8px;
+      background: #ffffff;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.58);
+      cursor: default;
+    }
+
     @media (max-width: 1100px) {
       .profile-name,
       .profile-slogan,
@@ -424,7 +529,10 @@
         padding: 0 28px;
       }
 
-      .four-card-grid,
+      .four-card-grid {
+        grid-template-columns: 1fr;
+      }
+
       .projects-grid {
         grid-template-columns: 1fr;
       }
@@ -443,6 +551,7 @@
         flex-direction: column;
         gap: 18px;
         padding: 0 20px;
+        transform: none;
       }
 
       .profile-copy {
@@ -487,6 +596,33 @@
         padding-left: 18px;
         padding-right: 18px;
       }
+
+      .lightbox-toolbar {
+        top: 12px;
+        gap: 5px;
+        padding: 6px;
+      }
+
+      .lightbox-tool-button {
+        min-width: 36px;
+        height: 36px;
+        padding: 0 10px;
+      }
+
+      .lightbox-reset-button {
+        padding: 0 11px;
+      }
+
+      .lightbox-close-button {
+        top: 12px;
+        right: 12px;
+        width: 40px;
+        height: 40px;
+      }
+
+      .lightbox-scroll-area {
+        padding: 75px 18px 35px;
+      }
     }
   </style>
 
@@ -508,6 +644,8 @@
     </svg>
   </template>
 </helmet>
+
+<!-- PAGE CONTENT -->
 
 <div class="page-wrapper">
 
@@ -621,6 +759,7 @@
       <a
         href="./assets/Ziqi_Cao_DA_Resume_Portfolio.pdf"
         target="_blank"
+        rel="noopener noreferrer"
         class="pf-link"
         style="display:flex;align-items:center;justify-content:center;min-width:145px;font-size:20px;font-weight:700;color:#0d4fb0;background:#ffffff;padding:12px 32px;border-radius:5px;text-decoration:none;box-sizing:border-box">
         Resume
@@ -629,6 +768,7 @@
       <a
         href="https://www.linkedin.com/in/ziqi-ankit-cao"
         target="_blank"
+        rel="noopener noreferrer"
         class="pf-link"
         style="display:flex;align-items:center;justify-content:center;min-width:145px;font-size:20px;font-weight:700;color:#ffffff;background:transparent;border:2px solid #ffffff;padding:11px 32px;border-radius:5px;text-decoration:none;box-sizing:border-box">
         LinkedIn
@@ -973,64 +1113,73 @@
 
   </div>
 
+</div>
 
- <!-- IMAGE LIGHTBOX -->
+<!--
+  LIGHTBOX 必须放在 page-wrapper 外面。
+  这样不会受到 page-wrapper 的 zoom:0.77 影响。
+-->
+
 <div
+  class="lightbox-overlay"
   onClick="{{ closeLightbox }}"
-  style="
-    position:fixed;
-    inset:0;
-    width:100vw;
-    height:100vh;
-    background:rgba(10,12,20,0.92);
-    z-index:9999;
-    display:{{ lightboxDisplay }};
-    align-items:center;
-    justify-content:center;
-    cursor:zoom-out;
-    padding:24px;
-    box-sizing:border-box;
-    overflow:auto;
-    text-align:center;
-    zoom:1.4925373134;
-  ">
+  style="display:{{ lightboxDisplay }}">
+
+  <!-- ZOOM TOOLBAR -->
+
+  <div
+    class="lightbox-toolbar"
+    onClick="{{ stopPropagation }}">
+
+    <button
+      class="lightbox-tool-button"
+      onClick="{{ zoomOutLightbox }}"
+      aria-label="Zoom out">
+      −
+    </button>
+
+    <div class="lightbox-zoom-label">
+      {{ lightboxZoomLabel }}
+    </div>
+
+    <button
+      class="lightbox-tool-button"
+      onClick="{{ zoomInLightbox }}"
+      aria-label="Zoom in">
+      +
+    </button>
+
+    <button
+      class="lightbox-tool-button lightbox-reset-button"
+      onClick="{{ resetLightboxZoom }}">
+      Reset
+    </button>
+
+  </div>
+
+  <!-- CLOSE BUTTON -->
 
   <button
+    class="lightbox-close-button"
     onClick="{{ closeLightbox }}"
-    style="
-      position:absolute;
-      top:18px;
-      right:18px;
-      width:44px;
-      height:44px;
-      border-radius:50%;
-      border:none;
-      background:rgba(255,255,255,0.18);
-      color:#ffffff;
-      font-size:22px;
-      line-height:1;
-      cursor:pointer;
-      z-index:10000;
-    ">
+    aria-label="Close image">
     ✕
   </button>
 
-  <img
-    ref="{{ lightboxImgRef }}"
-    onClick="{{ stopPropagation }}"
-    style="
-      width:auto;
-      max-width:88vw;
-      height:auto;
-      max-height:88vh;
-      object-fit:contain;
-      border-radius:8px;
-      box-shadow:0 20px 60px rgba(0,0,0,0.5);
-      cursor:default;
-      display:block;
-    ">
+  <!-- SCROLLABLE IMAGE AREA -->
 
-</div>
+  <div
+    class="lightbox-scroll-area"
+    onClick="{{ stopPropagation }}">
+
+    <img
+      ref="{{ lightboxImgRef }}"
+      class="lightbox-image"
+      onClick="{{ stopPropagation }}"
+      style="width:{{ lightboxImgWidth }}">
+
+  </div>
+
 </div>
 
 </x-dc>
@@ -1038,7 +1187,9 @@
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   state = {
-    lightboxOpen: false
+    lightboxOpen: false,
+    lightboxZoom: 1,
+    lightboxBaseWidth: 62
   };
 
   imgRef = React.createRef();
@@ -1049,46 +1200,128 @@ class Component extends DCLogic {
     const img =
       el &&
       el.shadowRoot &&
-      el.shadowRoot.querySelector('.frame img');
+      el.shadowRoot.querySelector(".frame img");
 
     const src =
       img &&
-      img.getAttribute('src');
+      img.getAttribute("src");
 
-    if (src && this.imgRef.current) {
-      this.imgRef.current.src = src;
-
-      this.setState({
-        lightboxOpen: true,
-        lightboxTop: Math.round(window.scrollY)
-      });
+    if (!src || !this.imgRef.current) {
+      return;
     }
+
+    const baseWidth =
+      id === "proof-cover"
+        ? 34
+        : 62;
+
+    this.imgRef.current.src = src;
+
+    this.setState({
+      lightboxOpen: true,
+      lightboxZoom: 1,
+      lightboxBaseWidth: baseWidth
+    });
+
+    document.body.style.overflow = "hidden";
+  }
+
+  closeLightbox() {
+    this.setState({
+      lightboxOpen: false,
+      lightboxZoom: 1
+    });
+
+    document.body.style.overflow = "";
+  }
+
+  zoomInLightbox() {
+    const currentZoom =
+      this.state.lightboxZoom || 1;
+
+    this.setState({
+      lightboxZoom: Math.min(
+        currentZoom + 0.25,
+        3
+      )
+    });
+  }
+
+  zoomOutLightbox() {
+    const currentZoom =
+      this.state.lightboxZoom || 1;
+
+    this.setState({
+      lightboxZoom: Math.max(
+        currentZoom - 0.25,
+        0.5
+      )
+    });
+  }
+
+  resetLightboxZoom() {
+    this.setState({
+      lightboxZoom: 1
+    });
   }
 
   renderVals() {
+    const zoom =
+      this.state.lightboxZoom || 1;
+
+    const baseWidth =
+      this.state.lightboxBaseWidth || 62;
+
     return {
       lightboxDisplay:
-        this.state.lightboxOpen ? 'flex' : 'none',
+        this.state.lightboxOpen
+          ? "block"
+          : "none",
 
-      lightboxTop:
-        this.state.lightboxTop || 0,
+      lightboxImgWidth:
+        `${baseWidth * zoom}vw`,
+
+      lightboxZoomLabel:
+        `${Math.round(zoom * 100)}%`,
 
       lightboxImgRef:
         this.imgRef,
 
       closeLightbox:
-        () => this.setState({
-          lightboxOpen: false
-        }),
+        (e) => {
+          if (e) {
+            e.stopPropagation();
+          }
+
+          this.closeLightbox();
+        },
+
+      zoomInLightbox:
+        (e) => {
+          e.stopPropagation();
+          this.zoomInLightbox();
+        },
+
+      zoomOutLightbox:
+        (e) => {
+          e.stopPropagation();
+          this.zoomOutLightbox();
+        },
+
+      resetLightboxZoom:
+        (e) => {
+          e.stopPropagation();
+          this.resetLightboxZoom();
+        },
 
       openGpa:
-        () => this.openLightbox('proof-gpa'),
+        () => this.openLightbox("proof-gpa"),
 
       openCert:
-        () => this.openLightbox('proof-cert'),
+        () => this.openLightbox("proof-cert"),
 
       openCover:
-        () => this.openLightbox('proof-cover'),
+        () => this.openLightbox("proof-cover"),
 
       stopPropagation:
         (e) => e.stopPropagation()
