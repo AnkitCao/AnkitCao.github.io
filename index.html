@@ -460,12 +460,45 @@
       text-align: center;
     }
 
+    .video-frame {
+      position: relative;
+      width: 100%;
+      background: #000000;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
     .demo-video {
       display: block;
       width: 100%;
       max-height: calc(100vh - 190px);
       background: #000000;
-      border-radius: 6px;
+    }
+
+    .video-control-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      width: 86px;
+      height: 86px;
+      padding: 0;
+      border: 2px solid rgba(255,255,255,0.88);
+      border-radius: 50%;
+      background: rgba(13,79,176,0.82);
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      font-size: 35px;
+      font-weight: 700;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.38);
+    }
+
+    .video-control-button:hover {
+      background: rgba(26,102,214,0.94);
+      transform: translate(-50%, -50%) scale(1.06);
     }
 
     /* LIGHTBOX */
@@ -702,6 +735,12 @@
 
       .demo-video {
         max-height: calc(100vh - 135px);
+      }
+
+      .video-control-button {
+        width: 64px;
+        height: 64px;
+        font-size: 27px;
       }
     }
   </style>
@@ -1236,17 +1275,29 @@
         RAG Clinical Note AI Agent Demo
       </h2>
 
-      <video
-        ref="{{ videoRef }}"
-        class="demo-video"
-        controls
-        preload="metadata"
-        playsinline>
-        <source
-          src="./assets/Demo%20of%20RAG%20Clinical%20Note%20AI%20Agent.mp4"
-          type="video/mp4">
-        Your browser does not support HTML5 video.
-      </video>
+      <div class="video-frame">
+
+        <video
+          ref="{{ videoRef }}"
+          class="demo-video"
+          preload="metadata"
+          playsinline
+          onEnded="{{ videoEnded }}">
+          <source
+            src="./assets/Demo%20of%20RAG%20Clinical%20Note%20AI%20Agent.mp4"
+            type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+
+        <button
+          type="button"
+          class="video-control-button"
+          onClick="{{ toggleVideo }}"
+          aria-label="{{ videoControlAria }}">
+          {{ videoControlLabel }}
+        </button>
+
+      </div>
 
     </div>
 
@@ -1324,7 +1375,8 @@ class Component extends DCLogic {
     lightboxOpen: false,
     lightboxZoom: 1,
     lightboxBaseWidth: 62,
-    videoOpen: false
+    videoOpen: false,
+    videoPlaying: false
   };
 
   imgRef = React.createRef();
@@ -1373,7 +1425,8 @@ class Component extends DCLogic {
 
   openVideo() {
     this.setState({
-      videoOpen: true
+      videoOpen: true,
+      videoPlaying: false
     });
 
     document.body.style.overflow = "hidden";
@@ -1388,10 +1441,56 @@ class Component extends DCLogic {
     }
 
     this.setState({
-      videoOpen: false
+      videoOpen: false,
+      videoPlaying: false
     });
 
     document.body.style.overflow = "";
+  }
+
+  toggleVideo() {
+    const video =
+      this.videoRef.current;
+
+    if (!video) {
+      return;
+    }
+
+    if (video.paused || video.ended) {
+      if (video.ended) {
+        video.currentTime = 0;
+      }
+
+      const playPromise =
+        video.play();
+
+      this.setState({
+        videoPlaying: true
+      });
+
+      if (
+        playPromise &&
+        playPromise.catch
+      ) {
+        playPromise.catch(() => {
+          this.setState({
+            videoPlaying: false
+          });
+        });
+      }
+    } else {
+      video.pause();
+
+      this.setState({
+        videoPlaying: false
+      });
+    }
+  }
+
+  videoEnded() {
+    this.setState({
+      videoPlaying: false
+    });
   }
 
   zoomInLightbox() {
@@ -1444,6 +1543,28 @@ class Component extends DCLogic {
 
       videoRef:
         this.videoRef,
+
+      videoControlLabel:
+        this.state.videoPlaying
+          ? "❚❚"
+          : "▶",
+
+      videoControlAria:
+        this.state.videoPlaying
+          ? "Pause video"
+          : "Play video",
+
+      toggleVideo:
+        (e) => {
+          if (e) {
+            e.stopPropagation();
+          }
+
+          this.toggleVideo();
+        },
+
+      videoEnded:
+        () => this.videoEnded(),
 
       openVideo:
         (e) => {
