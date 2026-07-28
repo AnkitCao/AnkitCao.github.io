@@ -436,14 +436,16 @@
       min-width: 100%;
       min-height: 100%;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
       padding: 92px 50px 60px;
       box-sizing: border-box;
     }
 
     .video-modal {
-      width: min(92vw, 1200px);
+      width: 92vw;
+      max-width: none;
+      flex-shrink: 0;
       padding: 24px;
       background: #ffffff;
       border-radius: 8px;
@@ -471,8 +473,9 @@
     .demo-video {
       display: block;
       width: 100%;
-      max-height: calc(100vh - 190px);
+      height: auto;
       background: #000000;
+      cursor: pointer;
     }
 
     .video-control-button {
@@ -1266,10 +1269,42 @@
   </button>
 
   <div
+    class="lightbox-toolbar"
+    onClick="{{ stopPropagation }}">
+
+    <button
+      class="lightbox-tool-button"
+      onClick="{{ zoomOutVideo }}"
+      aria-label="Zoom out video">
+      −
+    </button>
+
+    <div class="lightbox-zoom-label">
+      {{ videoZoomLabel }}
+    </div>
+
+    <button
+      class="lightbox-tool-button"
+      onClick="{{ zoomInVideo }}"
+      aria-label="Zoom in video">
+      +
+    </button>
+
+    <button
+      class="lightbox-tool-button lightbox-reset-button"
+      onClick="{{ resetVideoZoom }}">
+      Reset
+    </button>
+
+  </div>
+
+  <div
     class="video-scroll-area"
     onClick="{{ stopPropagation }}">
 
-    <div class="video-modal">
+    <div
+      class="video-modal"
+      style="width:{{ videoModalWidth }}">
 
       <h2 class="video-title">
         RAG Clinical Note AI Agent Demo
@@ -1282,6 +1317,7 @@
           class="demo-video"
           preload="metadata"
           playsinline
+          onClick="{{ toggleVideo }}"
           onEnded="{{ videoEnded }}">
           <source
             src="./assets/Demo%20of%20RAG%20Clinical%20Note%20AI%20Agent.mp4"
@@ -1293,8 +1329,9 @@
           type="button"
           class="video-control-button"
           onClick="{{ toggleVideo }}"
-          aria-label="{{ videoControlAria }}">
-          {{ videoControlLabel }}
+          style="display:{{ videoControlDisplay }}"
+          aria-label="Play video">
+          ▶
         </button>
 
       </div>
@@ -1376,7 +1413,8 @@ class Component extends DCLogic {
     lightboxZoom: 1,
     lightboxBaseWidth: 62,
     videoOpen: false,
-    videoPlaying: false
+    videoPlaying: false,
+    videoZoom: 1
   };
 
   imgRef = React.createRef();
@@ -1426,7 +1464,8 @@ class Component extends DCLogic {
   openVideo() {
     this.setState({
       videoOpen: true,
-      videoPlaying: false
+      videoPlaying: false,
+      videoZoom: 1
     });
 
     document.body.style.overflow = "hidden";
@@ -1442,7 +1481,8 @@ class Component extends DCLogic {
 
     this.setState({
       videoOpen: false,
-      videoPlaying: false
+      videoPlaying: false,
+      videoZoom: 1
     });
 
     document.body.style.overflow = "";
@@ -1493,6 +1533,30 @@ class Component extends DCLogic {
     });
   }
 
+  zoomInVideo() {
+    const currentZoom =
+      this.state.videoZoom || 1;
+
+    this.setState({
+      videoZoom: Math.min(currentZoom + 0.25, 3)
+    });
+  }
+
+  zoomOutVideo() {
+    const currentZoom =
+      this.state.videoZoom || 1;
+
+    this.setState({
+      videoZoom: Math.max(currentZoom - 0.25, 0.5)
+    });
+  }
+
+  resetVideoZoom() {
+    this.setState({
+      videoZoom: 1
+    });
+  }
+
   zoomInLightbox() {
     const currentZoom =
       this.state.lightboxZoom || 1;
@@ -1530,6 +1594,9 @@ class Component extends DCLogic {
     const baseWidth =
       this.state.lightboxBaseWidth || 62;
 
+    const videoZoom =
+      this.state.videoZoom || 1;
+
     return {
       lightboxDisplay:
         this.state.lightboxOpen
@@ -1544,15 +1611,16 @@ class Component extends DCLogic {
       videoRef:
         this.videoRef,
 
-      videoControlLabel:
+      videoControlDisplay:
         this.state.videoPlaying
-          ? "❚❚"
-          : "▶",
+          ? "none"
+          : "block",
 
-      videoControlAria:
-        this.state.videoPlaying
-          ? "Pause video"
-          : "Play video",
+      videoZoomLabel:
+        `${Math.round(videoZoom * 100)}%`,
+
+      videoModalWidth:
+        `${92 * videoZoom}vw`,
 
       toggleVideo:
         (e) => {
@@ -1565,6 +1633,24 @@ class Component extends DCLogic {
 
       videoEnded:
         () => this.videoEnded(),
+
+      zoomInVideo:
+        (e) => {
+          e.stopPropagation();
+          this.zoomInVideo();
+        },
+
+      zoomOutVideo:
+        (e) => {
+          e.stopPropagation();
+          this.zoomOutVideo();
+        },
+
+      resetVideoZoom:
+        (e) => {
+          e.stopPropagation();
+          this.resetVideoZoom();
+        },
 
       openVideo:
         (e) => {
