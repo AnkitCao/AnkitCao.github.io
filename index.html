@@ -4,6 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="./support.js"></script>
+  <link rel="preload" href="./assets/CIX%20Project%20Slides.pdf" as="fetch" type="application/pdf">
+  <link rel="preload" href="./assets/Construction%20Bidding%20Project%20Slides.pdf" as="fetch" type="application/pdf">
+  <link rel="preload" href="./assets/Clinical%20Note%20Flyer.pdf" as="fetch" type="application/pdf">
 </head>
 
 <body>
@@ -1409,6 +1412,7 @@
         class="slides-frame"
         src="{{ slidesSrc }}"
         title="{{ slidesTitle }}"
+        loading="eager"
         allowfullscreen>
       </iframe>
 
@@ -2005,7 +2009,7 @@ class Component extends DCLogic {
           e.preventDefault();
           e.stopPropagation();
           this.openSlides(
-            "https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Fankitcao.github.io%2Fassets%2FConstruction%2520Bidding%2520Project%2520Slides.pptx",
+            "./assets/Construction%20Bidding%20Project%20Slides.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH",
             "Construction Bidding Project Slides"
           );
         },
@@ -2015,7 +2019,7 @@ class Component extends DCLogic {
           e.preventDefault();
           e.stopPropagation();
           this.openSlides(
-            "https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Fankitcao.github.io%2Fassets%2FCIX%2520Project%2520Slides.pptx",
+            "./assets/CIX%20Project%20Slides.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH",
             "Healthcare AI Competitive Intelligence Slides"
           );
         },
@@ -2024,7 +2028,10 @@ class Component extends DCLogic {
         (e) => {
           e.preventDefault();
           e.stopPropagation();
-          this.openFlyer();
+          this.openSlides(
+            "./assets/Clinical%20Note%20Flyer.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH",
+            "RAG Project Flyer"
+          );
         },
 
       closeSlides:
