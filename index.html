@@ -1414,6 +1414,7 @@
         class="slides-frame"
         src="{{ slidesSrc }}"
         title="{{ slidesTitle }}"
+        style="pointer-events:{{ slidesFramePointerEvents }}"
         loading="eager"
         allowfullscreen>
       </iframe>
@@ -1987,6 +1988,11 @@ class Component extends DCLogic {
       slidesTitle:
         this.state.slidesTitle,
 
+      slidesFramePointerEvents:
+        this.state.slidesTitle === "RAG Project Flyer"
+          ? "auto"
+          : "none",
+
       slidesZoomLabel:
         `${Math.round(slidesZoom * 100)}%`,
 
@@ -2041,7 +2047,7 @@ class Component extends DCLogic {
           this.openSlides(
             "./assets/Clinical%20Note%20Flyer.pdf#page=1&view=Fit&toolbar=0&navpanes=0&scrollbar=0",
             "RAG Project Flyer",
-            1.75
+            1.25
           );
         },
 
