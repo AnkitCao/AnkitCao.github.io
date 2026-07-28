@@ -1685,12 +1685,12 @@ class Component extends DCLogic {
     document.body.style.overflow = "";
   }
 
-  openSlides(src, title) {
+  openSlides(src, title, initialZoom = 1) {
     this.setState({
       slidesOpen: true,
       slidesSrc: src,
       slidesTitle: title,
-      slidesZoom: 1
+      slidesZoom: initialZoom
     });
 
     document.body.style.overflow = "hidden";
@@ -2038,7 +2038,8 @@ class Component extends DCLogic {
           e.stopPropagation();
           this.openSlides(
             "./assets/Clinical%20Note%20Flyer.pdf#page=1&view=Fit&toolbar=0&navpanes=0&scrollbar=0",
-            "RAG Project Flyer"
+            "RAG Project Flyer",
+            1.75
           );
         },
 
