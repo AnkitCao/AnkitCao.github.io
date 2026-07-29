@@ -504,7 +504,7 @@
       min-height: 100%;
       display: flex;
       align-items: flex-start;
-      justify-content: flex-start;
+      justify-content: center;
       padding: 92px 5vw 60px;
       box-sizing: border-box;
     }
@@ -1486,7 +1486,8 @@
 
   <div
     class="video-scroll-area"
-    onClick="{{ stopPropagation }}">
+    onClick="{{ stopPropagation }}"
+    style="width:{{ videoScrollWidth }}">
 
     <div
       class="video-modal"
@@ -2097,6 +2098,9 @@ class Component extends DCLogic {
 
       videoModalWidth:
         `${90 * videoZoom}vw`,
+
+      videoScrollWidth:
+        `${Math.max(100, 90 * videoZoom + 10)}vw`,
 
       toggleVideo:
         (e) => {
