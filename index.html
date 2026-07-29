@@ -647,7 +647,7 @@
       border: none;
       border-radius: 50%;
       background: rgba(255,255,255,0.2);
-      color: #6b7280;
+      color: #2f83e8;
       font-size: 23px;
       line-height: 1;
       cursor: pointer;
@@ -2007,7 +2007,8 @@ class Component extends DCLogic {
         this.state.slidesTitle,
 
       slidesFramePointerEvents:
-        this.state.slidesTitle === "RAG Project Flyer"
+        this.state.slidesTitle === "RAG Project Flyer" &&
+        slidesZoom <= 1
           ? "auto"
           : "none",
 
