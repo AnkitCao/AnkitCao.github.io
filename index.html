@@ -6,6 +6,7 @@
   <script src="./support.js"></script>
   <link rel="preload" href="./assets/CIX%20Project%20Slides.pdf" as="fetch" type="application/pdf">
   <link rel="preload" href="./assets/Construction%20Bidding%20Project%20Slides.pdf" as="fetch" type="application/pdf">
+  <link rel="preload" href="./assets/DBS%20QDII%20Project%20Slide.pdf" as="fetch" type="application/pdf">
   <link rel="preload" href="./assets/Clinical%20Note%20Flyer.pdf?v=71f91a79" as="fetch" type="application/pdf">
 </head>
 
@@ -1268,7 +1269,10 @@
             $2.16M Client Sales
           </div>
 
-          <a href="#" class="pf-link project-link">
+          <a
+            href="#dbs-qdii-slides"
+            onClick="{{ openDbsSlides }}"
+            class="pf-link project-link">
             View Slides →
           </a>
 
@@ -2037,6 +2041,16 @@ class Component extends DCLogic {
           this.openSlides(
             "./assets/CIX%20Project%20Slides.pdf#page=1&view=Fit&toolbar=0&navpanes=0&scrollbar=0",
             "Healthcare AI Competitive Intelligence Slides"
+          );
+        },
+
+      openDbsSlides:
+        (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          this.openSlides(
+            "./assets/DBS%20QDII%20Project%20Slide.pdf#page=1&view=Fit&toolbar=0&navpanes=0&scrollbar=0",
+            "DBS Private Banking Portfolio Analytics"
           );
         },
 
