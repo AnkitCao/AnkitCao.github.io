@@ -1,0 +1,2236 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="./support.js"></script>
+  <link rel="preload" href="./assets/CIX%20Project%20Slides.pdf" as="fetch" type="application/pdf">
+  <link rel="preload" href="./assets/Construction%20Bidding%20Project%20Slides.pdf" as="fetch" type="application/pdf">
+  <link rel="preload" href="./assets/DBS%20QDII%20Project%20Slide.pdf" as="fetch" type="application/pdf">
+  <link rel="preload" href="./assets/Clinical%20Note%20Flyer.pdf?v=71f91a79" as="fetch" type="application/pdf">
+</head>
+
+<body>
+<x-dc>
+
+<helmet>
+  <style>
+    body {
+      margin: 0;
+      background: #f7f6f4;
+    }
+
+    ::selection {
+      background: #6b7a99;
+      color: #ffffff;
+    }
+
+    a.pf-link:hover {
+      opacity: 0.75;
+    }
+
+    .page-wrapper {
+      width: 100%;
+      font-family: "Times New Roman", Times, serif;
+      color: #232733;
+      position: relative;
+      zoom: 0.77;
+    }
+
+    /* HERO */
+
+    .hero {
+      background: linear-gradient(
+        120deg,
+        #3d8ded 0%,
+        #1a66d6 45%,
+        #0d4fb0 100%
+      );
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 24px 38px;
+      box-sizing: border-box;
+      position: relative;
+      gap: 18px;
+    }
+
+    .hero-logo-container {
+      position: absolute;
+      top: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 1080px;
+      padding: 0 64px;
+      box-sizing: border-box;
+      pointer-events: none;
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      max-width: 1080px;
+      width: 100%;
+      padding: 0 64px;
+      box-sizing: border-box;
+      transform: translateX(-81px);
+    }
+
+    .profile-photo {
+      width: 122px;
+      height: 122px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      display: block;
+    }
+
+    .profile-copy {
+      text-align: center;
+    }
+
+    .profile-name {
+      font-family: "Times New Roman", Times, serif;
+      font-weight: 700;
+      font-size: 33px;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      line-height: 1.15;
+    }
+
+    .profile-divider {
+      width: 60px;
+      height: 1px;
+      background: rgba(255,255,255,0.5);
+      margin: 10px auto;
+    }
+
+   .profile-slogan {
+  font-size: 26px;
+  color: #ffffff;
+  font-weight: 700;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+    .profile-role {
+      font-size: 15px;
+      color: #ffffff;
+      margin-top: 12px;
+      letter-spacing: 0.02em;
+      font-weight: 500;
+      line-height: 1.4;
+      white-space: nowrap;
+    }
+
+    /* EDUCATION + CERTIFICATIONS */
+
+    .credentials-grid {
+      max-width: 980px;
+      width: 100%;
+      padding: 0 44px;
+      box-sizing: border-box;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .credential-card {
+      background: rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 13px 22px;
+      text-align: left;
+      box-sizing: border-box;
+      min-width: 0;
+    }
+
+    .credential-heading {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: #a9c1ef;
+      margin-bottom: 7px;
+      line-height: 1.2;
+    }
+
+    .credential-primary {
+      font-size: 16px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.3;
+      white-space: nowrap;
+    }
+
+    .credential-secondary-bold {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-top: 2px;
+      line-height: 1.3;
+      white-space: nowrap;
+    }
+
+    .credential-school {
+      font-size: 16px;
+      color: #dbe8ff;
+      margin-top: 7px;
+      line-height: 1.25;
+      white-space: nowrap;
+    }
+
+    .credential-degree {
+      font-size: 14.5px;
+      color: #dbe8ff;
+      margin-top: 1px;
+      line-height: 1.25;
+      white-space: nowrap;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* PITCH */
+
+    .pitch-heading-container {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 28px 36px 4px;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    /* FOUR CARDS */
+
+    .four-card-grid {
+      max-width: 1450px;
+      margin: 0 auto;
+      padding: 38px 36px 76px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+      justify-items: stretch;
+      box-sizing: border-box;
+    }
+
+    .feature-card {
+      background: #ffffff;
+      border-radius: 6px;
+      border-top: 3px solid #1a66d6;
+      box-shadow: 0 1px 3px rgba(20,24,32,0.06);
+      padding: 24px 28px 22px;
+      display: flex;
+      flex-direction: column;
+      min-height: 265px;
+      box-sizing: border-box;
+      min-width: 0;
+    }
+
+    .feature-card-heading {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    .feature-number {
+      width: 31px;
+      height: 31px;
+      border-radius: 50%;
+      background: linear-gradient(135deg,#2f83e8,#0d4fb0);
+      color: #dbe8ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Times New Roman", Times, serif;
+      font-weight: 700;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .feature-title {
+      font-family: "Times New Roman", Times, serif;
+      font-weight: 700;
+      font-size: 23px;
+      color: #232733;
+      margin: 0;
+      line-height: 1.25;
+      white-space: nowrap;
+    }
+
+    .feature-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 0;
+    }
+
+    .feature-text {
+      font-size: 19px;
+      line-height: 1.58;
+      color: #454b58;
+      margin: 0;
+    }
+
+    .feature-text + .feature-text {
+      margin-top: 8px;
+    }
+
+   .feature-footer {
+    margin-top: 18px;
+    padding-top: 12px;
+    border-top: 1px solid #ececec;
+}
+
+    .feature-link {
+      font-size: 17px;
+      font-weight: 700;
+      color: #1a66d6;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .feature-note {
+      font-size: 15px;
+      color: #6b7a99;
+      margin-top: 5px;
+      line-height: 1.3;
+    }
+
+    .dual-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    /* PROOF IMAGES */
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 16px;
+      flex: 1;
+      align-content: center;
+    }
+
+    .proof-item {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .proof-image {
+      width: 100%;
+      height: 92px;
+      cursor: zoom-in;
+    }
+
+    .proof-label {
+      text-align: center;
+      font-size: 16px;
+      font-weight: 600;
+      color: #232733;
+      line-height: 1.35;
+    }
+
+    /* SELECTED PROJECTS */
+
+    .projects-section {
+      background: #3b4a8c;
+      padding: 32px 36px 76px;
+      box-sizing: border-box;
+    }
+
+    .projects-container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 610px);
+      justify-content: center;
+      gap: 28px;
+    }
+
+    .project-card {
+      background: #ffffff;
+      border-radius: 6px;
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      min-width: 0;
+    }
+
+    .project-label {
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      color: #6b7a99;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .project-title {
+      font-family: "Times New Roman", Times, serif;
+      font-weight: 700;
+      font-size: 23px;
+      color: #232733;
+      margin-bottom: 10px;
+      white-space: nowrap;
+      line-height: 1.25;
+    }
+
+    .project-impact {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1a66d6;
+      margin-bottom: 16px;
+    }
+
+    .project-link {
+      margin-top: auto;
+      font-size: 17px;
+      font-weight: 700;
+      color: #232733;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    /* SLIDES MODAL */
+
+    .slides-overlay {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(10,12,20,0.94);
+      z-index: 99999;
+      overflow: auto;
+      box-sizing: border-box;
+      overscroll-behavior: contain;
+    }
+
+    .slides-scroll-area {
+      min-width: 100%;
+      min-height: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 76px 5vw 42px;
+      box-sizing: border-box;
+      cursor: grab;
+      user-select: none;
+    }
+
+    .slides-scroll-area.is-panning {
+      cursor: grabbing;
+    }
+
+    .slides-modal {
+      width: 90vw;
+      height: calc(100vh - 118px);
+      min-height: 0;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      background: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.58);
+    }
+
+    .slides-title {
+      margin: 0;
+      padding: 17px 74px 15px;
+      color: #232733;
+      font-family: "Times New Roman", Times, serif;
+      font-size: 25px;
+      line-height: 1.25;
+      text-align: center;
+      border-bottom: 1px solid #e2e5eb;
+      background: #ffffff;
+    }
+
+    .slides-frame {
+      width: 100%;
+      flex: 1;
+      border: none;
+      background: #f1f3f6;
+      pointer-events: none;
+    }
+
+    /* VIDEO MODAL */
+
+    .video-demo-button {
+      margin: 0;
+      padding: 0;
+      border: none;
+      background: transparent;
+      font-family: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .video-demo-button:hover {
+      opacity: 0.75;
+    }
+
+    .video-overlay {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(10,12,20,0.94);
+      z-index: 99999;
+      overflow: auto;
+      box-sizing: border-box;
+      overscroll-behavior: contain;
+    }
+
+    .video-scroll-area {
+      min-width: 100%;
+      min-height: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 92px 5vw 60px;
+      box-sizing: border-box;
+    }
+
+    .video-modal {
+      width: 90vw;
+      max-width: none;
+      flex-shrink: 0;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 24px;
+      background: #ffffff;
+      border-radius: 8px;
+      box-sizing: border-box;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.58);
+    }
+
+    .video-title {
+      margin: 0 0 18px;
+      color: #232733;
+      font-family: "Times New Roman", Times, serif;
+      font-size: 28px;
+      line-height: 1.25;
+      text-align: center;
+    }
+
+    .video-frame {
+      position: relative;
+      width: 100%;
+      background: #000000;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .demo-video {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #000000;
+      cursor: pointer;
+    }
+
+    .video-control-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      width: 86px;
+      height: 86px;
+      padding: 0;
+      border: 2px solid rgba(255,255,255,0.88);
+      border-radius: 50%;
+      background: rgba(13,79,176,0.82);
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      font-size: 35px;
+      font-weight: 700;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.38);
+    }
+
+    .video-control-button:hover {
+      background: rgba(26,102,214,0.94);
+      transform: translate(-50%, -50%) scale(1.06);
+    }
+
+    /* LIGHTBOX */
+
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(10,12,20,0.94);
+      z-index: 99999;
+      overflow: auto;
+      box-sizing: border-box;
+      cursor: zoom-out;
+      overscroll-behavior: contain;
+    }
+
+    .lightbox-toolbar {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100002;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 28px;
+      background: rgba(35,39,51,0.92);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.38);
+      cursor: default;
+      font-family: Arial, sans-serif;
+    }
+
+    .lightbox-tool-button {
+      min-width: 42px;
+      height: 42px;
+      padding: 0 12px;
+      border: none;
+      border-radius: 21px;
+      background: rgba(255,255,255,0.16);
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1;
+      cursor: pointer;
+      box-sizing: border-box;
+    }
+
+    .lightbox-tool-button:hover {
+      background: rgba(255,255,255,0.27);
+    }
+
+    .lightbox-reset-button {
+      font-size: 14px;
+      padding: 0 16px;
+    }
+
+    .lightbox-zoom-label {
+      min-width: 62px;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .lightbox-close-button {
+      position: fixed;
+      top: 18px;
+      right: 20px;
+      z-index: 100003;
+      width: 46px;
+      height: 46px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      color: #2f83e8;
+      font-size: 23px;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.28);
+    }
+
+    .lightbox-close-button:hover {
+      background: rgba(255,255,255,0.32);
+    }
+
+    .lightbox-scroll-area {
+      min-width: 100%;
+      min-height: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 92px 50px 60px;
+      box-sizing: border-box;
+      cursor: grab;
+      user-select: none;
+    }
+
+    .lightbox-scroll-area.is-panning {
+      cursor: grabbing;
+    }
+
+    .lightbox-image {
+      height: auto;
+      max-width: none;
+      max-height: none;
+      object-fit: contain;
+      display: block;
+      flex-shrink: 0;
+      border-radius: 8px;
+      background: #ffffff;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.58);
+      cursor: inherit;
+      pointer-events: none;
+    }
+
+    @media (max-width: 1100px) {
+      .profile-name,
+      .profile-slogan,
+      .profile-role,
+      .credential-primary,
+      .credential-secondary-bold,
+      .credential-school,
+      .credential-degree,
+      .feature-title,
+      .project-title {
+        white-space: normal;
+      }
+
+      .credentials-grid {
+        padding: 0 28px;
+      }
+
+      .four-card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-card {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .page-wrapper {
+        zoom: 1;
+      }
+
+      .profile-header {
+        flex-direction: column;
+        gap: 18px;
+        padding: 0 20px;
+        transform: none;
+      }
+
+      .profile-copy {
+        text-align: center;
+      }
+
+      .profile-name {
+        font-size: 30px;
+      }
+
+      .profile-slogan {
+        font-size: 20px;
+      }
+
+      .profile-role {
+        font-size: 14px;
+      }
+
+      .credentials-grid {
+        grid-template-columns: 1fr;
+        padding: 0 18px;
+      }
+
+      .hero-logo-container {
+        display: none;
+      }
+
+      .proof-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .proof-image {
+        height: 170px;
+      }
+
+      .four-card-grid {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .projects-section {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .lightbox-toolbar {
+        top: 12px;
+        gap: 5px;
+        padding: 6px;
+      }
+
+      .lightbox-tool-button {
+        min-width: 36px;
+        height: 36px;
+        padding: 0 10px;
+      }
+
+      .lightbox-reset-button {
+        padding: 0 11px;
+      }
+
+      .lightbox-close-button {
+        top: 12px;
+        right: 12px;
+        width: 40px;
+        height: 40px;
+      }
+
+      .lightbox-scroll-area,
+      .video-scroll-area {
+        padding: 75px 18px 35px;
+      }
+
+      .video-modal {
+        width: 100%;
+        padding: 14px;
+      }
+
+      .video-title {
+        font-size: 22px;
+        margin-bottom: 12px;
+      }
+
+      .demo-video {
+        max-height: calc(100vh - 135px);
+      }
+
+      .video-control-button {
+        width: 64px;
+        height: 64px;
+        font-size: 27px;
+      }
+    }
+  </style>
+
+  <script src="./image-slot.js"></script>
+
+  <template id="__bundler_thumbnail">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+      <rect width="100" height="100" fill="#1a66d6"/>
+      <text
+        x="50"
+        y="62"
+        font-family="Times New Roman,serif"
+        font-size="34"
+        font-weight="bold"
+        fill="#ffffff"
+        text-anchor="middle">
+        ZC
+      </text>
+    </svg>
+  </template>
+</helmet>
+
+<!-- PAGE CONTENT -->
+
+<div class="page-wrapper">
+
+  <!-- HERO -->
+
+  <div class="hero">
+
+    <div class="hero-logo-container">
+      <image-slot
+        id="umn-carlson-logo"
+        shape="rect"
+        fit="cover"
+        src="./assets/umn-carlson-logo.png"
+        style="position:absolute;top:18px;right:145px;width:102px;height:102px">
+      </image-slot>
+    </div>
+
+    <div class="profile-header">
+
+      <img
+        src="./assets/Profile%20Picture.jpg"
+        alt="Profile Picture"
+        class="profile-photo">
+
+      <div class="profile-copy">
+
+        <div class="profile-name">
+          Ziqi (Ankit) Cao
+        </div>
+
+        <div class="profile-divider"></div>
+
+        <div class="profile-slogan">
+          Helping businesses turn financial data into revenue.
+        </div>
+
+        <div class="profile-role">
+          Financial Analyst · Data Modeling · Business Storyteller
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- EDUCATION + CERTIFICATIONS -->
+
+    <div class="credentials-grid">
+
+      <div class="credential-card">
+
+        <div class="credential-heading">
+          EDUCATION
+        </div>
+
+        <div class="credential-primary">
+          University of Minnesota · MS in Business Analytics
+        </div>
+
+        <div class="credential-secondary-bold">
+          GPA 3.95/4.00 · Rank 1/40
+        </div>
+
+        <div class="credential-primary" style="margin-top:7px">
+          Tongji University
+        </div>
+
+        <div class="credential-secondary-bold">
+          B.A. in Economics
+        </div>
+
+        <div class="credential-school">
+          Renmin University
+        </div>
+
+        <div class="credential-degree">
+          Master of Public Administration
+        </div>
+
+      </div>
+
+      <div class="credential-card">
+
+        <div class="credential-heading">
+          CERTIFICATIONS
+        </div>
+
+        <div class="credential-primary">
+          FRM Level I &amp; II
+        </div>
+
+        <div class="credential-degree">
+          Financial Risk Manager, Certified
+        </div>
+
+        <div class="credential-school" style="font-weight:700;color:#ffffff">
+          CFA Level I
+        </div>
+
+        <div class="credential-degree">
+          Chartered Financial Analyst
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- BUTTONS -->
+
+    <div class="hero-buttons">
+
+      <a
+        href="./assets/ZiqiCao%20DA%20Resume.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="pf-link"
+        style="display:flex;align-items:center;justify-content:center;min-width:145px;font-size:20px;font-weight:700;color:#0d4fb0;background:#ffffff;padding:12px 32px;border-radius:5px;text-decoration:none;box-sizing:border-box">
+        Resume
+      </a>
+
+      <a
+        href="https://www.linkedin.com/in/ziqi-ankit-cao"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="pf-link"
+        style="display:flex;align-items:center;justify-content:center;min-width:145px;font-size:20px;font-weight:700;color:#ffffff;background:transparent;border:2px solid #ffffff;padding:11px 32px;border-radius:5px;text-decoration:none;box-sizing:border-box">
+        LinkedIn
+      </a>
+
+      <a
+        href="https://mail.google.com/mail/?view=cm&fs=1&to=CAO00520%40umn.edu"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="pf-link"
+        style="display:flex;align-items:center;justify-content:center;min-width:145px;font-size:20px;font-weight:700;color:#ffffff;background:transparent;border:2px solid #ffffff;padding:11px 32px;border-radius:5px;text-decoration:none;box-sizing:border-box">
+        Email Me
+      </a>
+
+    </div>
+
+    <div style="position:absolute;bottom:10px;font-size:18px;color:#dbe8ff">
+      &#8964;
+    </div>
+
+  </div>
+
+  <!-- PITCH HEADLINE -->
+
+  <div class="pitch-heading-container">
+
+    <h1 style="font-family:'Times New Roman',Times,serif;font-weight:700;font-size:34px;line-height:1.2;margin:0;color:#232733">
+      💰 How can I make more money for you?
+    </h1>
+
+    <div style="width:54px;height:3px;background:#1a66d6;margin:18px auto 0"></div>
+
+  </div>
+
+  <!-- FOUR CARDS -->
+
+  <div class="four-card-grid">
+
+    <!-- CARD 1 -->
+
+    <div class="feature-card">
+
+      <div class="feature-card-heading">
+        <div class="feature-number">1</div>
+        <h2 class="feature-title">Business Storyteller</h2>
+      </div>
+
+      <div class="feature-body">
+
+        <p class="feature-text">
+          <strong style="color:#232733">
+            DBS Private Banking Portfolio Analytics:
+          </strong>
+          Forecasted investment returns and built a client-facing dashboard for 10+ fund managers,
+          supporting
+          <strong style="color:#232733">
+            $2.16M
+          </strong>
+          in product sales.
+        </p>
+
+        <p class="feature-text">
+          <strong style="color:#232733">
+            Guotai Junan Credit Analysis:
+          </strong>
+          Evaluated
+          <strong style="color:#232733">
+            $300K+
+          </strong>
+          in credit exposure and excluded
+          <strong style="color:#232733">
+            $45K
+          </strong>
+          in high-risk financing.
+        </p>
+
+      </div>
+
+      <div class="feature-footer">
+
+        <div class="dual-links" style="align-items:flex-start">
+
+          <div>
+            <a
+              href="#dbs-qdii-slides"
+              onClick="{{ openDbsSlides }}"
+              class="pf-link feature-link">
+              DBS Portfolio Slides →
+            </a>
+          </div>
+
+          <div>
+            <a
+              href="https://public.tableau.com/app/profile/ziqi.cao1283/viz/Dashboard_17770032512500/Dashboard1?publish=yes"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="pf-link feature-link">
+              Tableau Dashboards (Kaggle) →
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- CARD 2 -->
+
+    <div class="feature-card">
+
+      <div class="feature-card-heading">
+        <div class="feature-number">2</div>
+        <h2 class="feature-title">Always Learning (AI Agents)</h2>
+      </div>
+
+      <div class="feature-body">
+
+        <p class="feature-text">
+          <strong style="color:#232733">
+            RAG Clinical Note AI Agent:
+          </strong>
+          Semantic search across 40,000+ MIMIC-IV notes,
+          powered by GPT-4, cutting query time by 99%.
+        </p>
+
+        <p class="feature-text">
+          <strong style="color:#232733">
+            Healthcare AI Competitive Intelligence:
+          </strong>
+          Flags 99%+ of unreliable scoring outputs,
+          replacing 3 FTE-months of manual review.
+        </p>
+
+      </div>
+
+      <div class="feature-footer">
+
+        <div class="dual-links">
+
+    <a
+      href="#rag-project-flyer"
+      onClick="{{ openFlyer }}"
+      class="pf-link feature-link">
+      RAG Project Flyer →
+    </a>
+
+          <a
+            href="#healthcare-ai-slides"
+            onClick="{{ openCixSlides }}"
+            class="pf-link feature-link">
+            Healthcare AI Slides →
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- CARD 3 -->
+
+    <div class="feature-card">
+
+      <div class="feature-card-heading">
+        <div class="feature-number">3</div>
+        <h2 class="feature-title">Pursuing Excellence</h2>
+      </div>
+
+      <div class="proof-grid">
+
+        <div class="proof-item">
+
+          <div onClick="{{ openGpa }}" class="proof-image">
+            <image-slot
+              id="proof-gpa"
+              shape="rounded"
+              radius="4"
+              style="width:100%;height:100%"
+              src="./assets/Carlson%20MSBA%20GPA%203.95.png">
+            </image-slot>
+          </div>
+
+          <div class="proof-label">
+            GPA 3.95/4.00
+            <br>
+            Rank 1/40
+          </div>
+
+        </div>
+
+        <div class="proof-item">
+
+          <div onClick="{{ openCert }}" class="proof-image">
+            <image-slot
+              id="proof-cert"
+              shape="rounded"
+              radius="4"
+              style="width:100%;height:100%"
+              src="./assets/CFA+FRM%20Certified.png">
+            </image-slot>
+          </div>
+
+          <div class="proof-label">
+            CFA Level I +
+            <br>
+            FRM I &amp; II
+          </div>
+
+        </div>
+
+        <div class="proof-item">
+
+          <div onClick="{{ openCover }}" class="proof-image">
+            <image-slot
+              id="proof-cover"
+              shape="rounded"
+              radius="4"
+              style="width:100%;height:100%"
+             src="./assets/carlson%20magazine.png">
+            </image-slot>
+          </div>
+
+          <div class="proof-label">
+            Carlson Magazine
+            <br>
+            Student Spotlight
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="feature-footer">
+        <span class="feature-link">
+          Click Image to Enlarge
+        </span>
+      </div>
+
+    </div>
+
+    <!-- CARD 4 -->
+
+    <div class="feature-card">
+
+      <div class="feature-card-heading">
+        <div class="feature-number">4</div>
+        <h2 class="feature-title">Strong Analytical Foundation</h2>
+      </div>
+
+      <div class="feature-body">
+
+        <p class="feature-text">
+          <strong style="color:#232733">
+            Construction Bid Pricing Analytics:
+          </strong>
+          Random Forest + LOF anomaly detection on 3,500+ bids,
+          uncovering
+          <strong style="color:#232733">
+            $4M
+          </strong>
+          in potential revenue and 264 hours of analyst time,
+          at an 80% match rate.
+        </p>
+
+      </div>
+
+      <div class="feature-footer">
+
+        <a
+          href="#construction-slides"
+          onClick="{{ openConstructionSlides }}"
+          class="pf-link feature-link">
+          Construction Bid Pricing Slides →
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- SELECTED PROJECTS -->
+
+  <div class="projects-section">
+
+    <div class="projects-container">
+
+      <h2 style="font-family:'Times New Roman',Times,serif;font-weight:700;font-size:38px;color:#ffffff;margin:0 0 40px;text-align:center">
+        Selected Projects
+      </h2>
+
+      <div class="projects-grid">
+
+        <div class="project-card">
+
+          <div class="project-label">
+            PROJECT 1
+          </div>
+
+          <div class="project-title">
+            Healthcare AI Competitive Intelligence
+          </div>
+
+          <div class="project-impact">
+            $2M Intelligence Value
+          </div>
+
+          <a
+            href="#healthcare-ai-slides"
+            onClick="{{ openCixSlides }}"
+            class="pf-link project-link">
+            View Slides →
+          </a>
+
+        </div>
+
+        <div class="project-card">
+
+          <div class="project-label">
+            PROJECT 2
+          </div>
+
+          <div class="project-title">
+            DBS Private Banking Portfolio Analytics
+          </div>
+
+          <div class="project-impact">
+            $2.16M Client Sales
+          </div>
+
+          <a
+            href="#dbs-qdii-slides"
+            onClick="{{ openDbsSlides }}"
+            class="pf-link project-link">
+            View Slides →
+          </a>
+
+        </div>
+
+        <div class="project-card">
+
+          <div class="project-label">
+            PROJECT 3
+          </div>
+
+          <div class="project-title">
+            RAG Clinical Note AI Agent
+          </div>
+
+          <div class="project-impact">
+            99% Faster Retrieval
+          </div>
+          <div style="margin-top:auto;display:flex;gap:24px">
+
+  <button
+    type="button"
+    onClick="{{ openVideo }}"
+    class="pf-link project-link video-demo-button">
+    View Demo →
+  </button>
+
+  <a
+    href="https://github.com/Eunggseo/big_data_team1"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="pf-link project-link">
+    GitHub →
+  </a>
+
+</div>
+
+
+
+          
+
+        </div>
+
+        <div class="project-card">
+
+          <div class="project-label">
+            PROJECT 4
+          </div>
+
+          <div class="project-title">
+            Construction Bid Pricing Analytics
+          </div>
+
+          <div class="project-impact">
+            $4M Revenue Opportunity
+          </div>
+
+          <a
+            href="#construction-slides"
+            onClick="{{ openConstructionSlides }}"
+            class="pf-link project-link">
+            View Slides →
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!--
+  VIDEO MODAL、SLIDES MODAL 和 LIGHTBOX 必须放在 page-wrapper 外面。
+  这样不会受到 page-wrapper 的 zoom:0.77 影响。
+-->
+
+<!-- SLIDES MODAL -->
+
+<div
+  ref="{{ slidesOverlayRef }}"
+  class="slides-overlay"
+  onClick="{{ closeSlides }}"
+  style="display:{{ slidesDisplay }}">
+
+  <button
+    type="button"
+    class="lightbox-close-button"
+    onClick="{{ closeSlides }}"
+    aria-label="Close slides">
+    ✕
+  </button>
+
+  <div
+    class="lightbox-toolbar"
+    onClick="{{ stopPropagation }}">
+
+    <button
+      class="lightbox-tool-button"
+      onClick="{{ zoomOutSlides }}"
+      aria-label="Zoom out slides">
+      −
+    </button>
+
+    <div class="lightbox-zoom-label">
+      {{ slidesZoomLabel }}
+    </div>
+
+    <button
+      class="lightbox-tool-button"
+      onClick="{{ zoomInSlides }}"
+      aria-label="Zoom in slides">
+      +
+    </button>
+
+    <button
+      class="lightbox-tool-button lightbox-reset-button"
+      onClick="{{ resetSlidesZoom }}">
+      Reset
+    </button>
+
+  </div>
+
+  <div
+    class="slides-scroll-area"
+    onClick="{{ stopPropagation }}"
+    onMouseDown="{{ startPanSlides }}"
+    onMouseMove="{{ movePan }}"
+    onMouseUp="{{ endPan }}"
+    onMouseLeave="{{ endPan }}">
+
+    <div
+      class="slides-modal"
+      style="width:{{ slidesModalWidth }};height:{{ slidesModalHeight }}">
+
+      <h2 class="slides-title">
+        {{ slidesTitle }}
+      </h2>
+
+      <iframe
+        class="slides-frame"
+        src="{{ slidesSrc }}"
+        title="{{ slidesTitle }}"
+        style="pointer-events:{{ slidesFramePointerEvents }}"
+        loading="eager"
+        allowfullscreen>
+      </iframe>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div
+  ref="{{ videoOverlayRef }}"
+  class="video-overlay"
+  onClick="{{ closeVideo }}"
+  style="display:{{ videoDisplay }}">
+
+  <button
+    type="button"
+    class="lightbox-close-button"
+    onClick="{{ closeVideo }}"
+    aria-label="Close video">
+    ✕
+  </button>
+
+  <div
+    class="lightbox-toolbar"
+    onClick="{{ stopPropagation }}">
+
+    <button
+      class="lightbox-tool-button"
+      onClick="{{ zoomOutVideo }}"
+      aria-label="Zoom out video">
+      −
+    </button>
+
+    <div class="lightbox-zoom-label">
+      {{ videoZoomLabel }}
+    </div>
+
+    <button
+      class="lightbox-tool-button"
+      onClick="{{ zoomInVideo }}"
+      aria-label="Zoom in video">
+      +
+    </button>
+
+    <button
+      class="lightbox-tool-button lightbox-reset-button"
+      onClick="{{ resetVideoZoom }}">
+      Reset
+    </button>
+
+  </div>
+
+  <div
+    class="video-scroll-area"
+    onClick="{{ stopPropagation }}"
+    style="width:{{ videoScrollWidth }}">
+
+    <div
+      class="video-modal"
+      style="width:{{ videoModalWidth }}">
+
+      <h2 class="video-title">
+        RAG Clinical Note AI Agent Demo
+      </h2>
+
+      <div class="video-frame">
+
+        <video
+          ref="{{ videoRef }}"
+          class="demo-video"
+          preload="metadata"
+          playsinline
+          onClick="{{ toggleVideo }}"
+          onEnded="{{ videoEnded }}">
+          <source
+            src="./assets/Demo%20of%20RAG%20Clinical%20Note%20AI%20Agent.mp4"
+            type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+
+        <button
+          type="button"
+          class="video-control-button"
+          onClick="{{ toggleVideo }}"
+          style="display:{{ videoControlDisplay }}"
+          aria-label="Play video">
+          ▶
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div
+  class="lightbox-overlay"
+  onClick="{{ closeLightbox }}"
+  style="display:{{ lightboxDisplay }}">
+
+  <!-- ZOOM TOOLBAR -->
+
+  <div
+    class="lightbox-toolbar"
+    onClick="{{ stopPropagation }}">
+
+    <button
+      class="lightbox-tool-button"
+      onClick="{{ zoomOutLightbox }}"
+      aria-label="Zoom out">
+      −
+    </button>
+
+    <div class="lightbox-zoom-label">
+      {{ lightboxZoomLabel }}
+    </div>
+
+    <button
+      class="lightbox-tool-button"
+      onClick="{{ zoomInLightbox }}"
+      aria-label="Zoom in">
+      +
+    </button>
+
+    <button
+      class="lightbox-tool-button lightbox-reset-button"
+      onClick="{{ resetLightboxZoom }}">
+      Reset
+    </button>
+
+  </div>
+
+  <!-- CLOSE BUTTON -->
+
+  <button
+    class="lightbox-close-button"
+    onClick="{{ closeLightbox }}"
+    aria-label="Close image">
+    ✕
+  </button>
+
+  <!-- SCROLLABLE IMAGE AREA -->
+
+  <div
+    class="lightbox-scroll-area"
+    onClick="{{ stopPropagation }}"
+    onMouseDown="{{ startPanLightbox }}"
+    onMouseMove="{{ movePan }}"
+    onMouseUp="{{ endPan }}"
+    onMouseLeave="{{ endPan }}">
+
+    <img
+      ref="{{ lightboxImgRef }}"
+      class="lightbox-image"
+      onClick="{{ stopPropagation }}"
+      style="width:{{ lightboxImgWidth }}">
+
+  </div>
+
+</div>
+
+</x-dc>
+
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    lightboxOpen: false,
+    lightboxZoom: 1,
+    lightboxBaseWidth: 62,
+    videoOpen: false,
+    videoPlaying: false,
+    videoZoom: 1,
+    slidesOpen: false,
+    slidesSrc: "",
+    slidesTitle: "",
+    slidesZoom: 1
+  };
+
+  imgRef = React.createRef();
+  videoRef = React.createRef();
+  slidesOverlayRef = React.createRef();
+  videoOverlayRef = React.createRef();
+
+  panOverlay = null;
+  panSurface = null;
+  panStartX = 0;
+  panStartY = 0;
+  panStartScrollLeft = 0;
+  panStartScrollTop = 0;
+
+  startPan(e, overlayClass) {
+    if (!e || e.button !== 0) return;
+    const overlay = document.querySelector("." + overlayClass);
+    if (!overlay || !e.currentTarget) return;
+    this.panOverlay = overlay;
+    this.panSurface = e.currentTarget;
+    this.panStartX = e.clientX;
+    this.panStartY = e.clientY;
+    this.panStartScrollLeft = overlay.scrollLeft;
+    this.panStartScrollTop = overlay.scrollTop;
+    this.panSurface.classList.add("is-panning");
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
+  movePan(e) {
+    if (!this.panOverlay) return;
+    if (e.buttons !== 1) {
+      this.endPan(e);
+      return;
+    }
+    this.panOverlay.scrollLeft =
+      this.panStartScrollLeft - (e.clientX - this.panStartX);
+    this.panOverlay.scrollTop =
+      this.panStartScrollTop - (e.clientY - this.panStartY);
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
+  endPan(e) {
+    if (this.panSurface) {
+      this.panSurface.classList.remove("is-panning");
+    }
+    this.panOverlay = null;
+    this.panSurface = null;
+    if (e) e.stopPropagation();
+  }
+
+  openLightbox(id) {
+    const el = document.getElementById(id);
+
+    const img =
+      el &&
+      el.shadowRoot &&
+      el.shadowRoot.querySelector(".frame img");
+
+    const src =
+      img &&
+      img.getAttribute("src");
+
+    if (!src || !this.imgRef.current) {
+      return;
+    }
+
+    const baseWidth =
+      id === "proof-cover"
+        ? 34
+        : 62;
+
+    this.imgRef.current.src = src;
+
+    this.setState({
+      lightboxOpen: true,
+      lightboxZoom: id === "proof-cover" ? 1.75 : 1,
+      lightboxBaseWidth: baseWidth
+    });
+
+    document.body.style.overflow = "hidden";
+  }
+
+  closeLightbox() {
+    this.setState({
+      lightboxOpen: false,
+      lightboxZoom: 1
+    });
+
+    document.body.style.overflow = "";
+  }
+
+  openSlides(src, title, initialZoom = 1) {
+    this.setState({
+      slidesOpen: true,
+      slidesSrc: src,
+      slidesTitle: title,
+      slidesZoom: 1
+    }, () => {
+      if (initialZoom !== 1) {
+        this.setZoomAroundViewportCenter(
+          "slides-overlay",
+          "slidesZoom",
+          initialZoom
+        );
+      }
+    });
+
+    document.body.style.overflow = "hidden";
+  }
+
+  closeSlides() {
+    this.setState({
+      slidesOpen: false,
+      slidesSrc: "",
+      slidesTitle: "",
+      slidesZoom: 1
+    });
+
+    document.body.style.overflow = "";
+  }
+
+  setZoomAroundViewportCenter(
+    overlayClass,
+    stateKey,
+    nextZoom
+  ) {
+    const overlay =
+      document.querySelector(
+        "." + overlayClass
+      );
+
+    if (!overlay) {
+      this.setState({
+        [stateKey]: nextZoom
+      });
+      return;
+    }
+
+    const centerRatioX =
+      (
+        overlay.scrollLeft +
+        overlay.clientWidth / 2
+      ) /
+      Math.max(overlay.scrollWidth, 1);
+
+    const centerRatioY =
+      (
+        overlay.scrollTop +
+        overlay.clientHeight / 2
+      ) /
+      Math.max(overlay.scrollHeight, 1);
+
+    this.setState({
+      [stateKey]: nextZoom
+    });
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const updatedOverlay =
+          document.querySelector(
+            "." + overlayClass
+          );
+
+        if (!updatedOverlay) {
+          return;
+        }
+
+        updatedOverlay.scrollLeft =
+          centerRatioX * updatedOverlay.scrollWidth -
+          updatedOverlay.clientWidth / 2;
+
+        updatedOverlay.scrollTop =
+          centerRatioY * updatedOverlay.scrollHeight -
+          updatedOverlay.clientHeight / 2;
+      });
+    });
+  }
+
+  zoomInSlides() {
+    const currentZoom =
+      this.state.slidesZoom || 1;
+
+    this.setZoomAroundViewportCenter(
+      "slides-overlay",
+      "slidesZoom",
+      Math.min(currentZoom + 0.25, 3)
+    );
+  }
+
+  zoomOutSlides() {
+    const currentZoom =
+      this.state.slidesZoom || 1;
+
+    this.setZoomAroundViewportCenter(
+      "slides-overlay",
+      "slidesZoom",
+      Math.max(currentZoom - 0.25, 0.5)
+    );
+  }
+
+  resetSlidesZoom() {
+    this.setZoomAroundViewportCenter(
+      "slides-overlay",
+      "slidesZoom",
+      1
+    );
+  }
+
+  openFlyer() {
+    if (!this.imgRef.current) {
+      return;
+    }
+
+    this.imgRef.current.src =
+      "./assets/Clinical%20Note%20Flyer.png";
+
+    this.setState({
+      lightboxOpen: true,
+      lightboxZoom: 1,
+      lightboxBaseWidth: 50
+    });
+
+    document.body.style.overflow = "hidden";
+  }
+
+  openVideo() {
+    this.setState({
+      videoOpen: true,
+      videoPlaying: false,
+      videoZoom: 1
+    });
+
+    document.body.style.overflow = "hidden";
+  }
+
+  closeVideo() {
+    const video =
+      this.videoRef.current;
+
+    if (video) {
+      video.pause();
+    }
+
+    this.setState({
+      videoOpen: false,
+      videoPlaying: false,
+      videoZoom: 1
+    });
+
+    document.body.style.overflow = "";
+  }
+
+  toggleVideo() {
+    const video =
+      this.videoRef.current;
+
+    if (!video) {
+      return;
+    }
+
+    if (video.paused || video.ended) {
+      if (video.ended) {
+        video.currentTime = 0;
+      }
+
+      const playPromise =
+        video.play();
+
+      this.setState({
+        videoPlaying: true
+      });
+
+      if (
+        playPromise &&
+        playPromise.catch
+      ) {
+        playPromise.catch(() => {
+          this.setState({
+            videoPlaying: false
+          });
+        });
+      }
+    } else {
+      video.pause();
+
+      this.setState({
+        videoPlaying: false
+      });
+    }
+  }
+
+  videoEnded() {
+    this.setState({
+      videoPlaying: false
+    });
+  }
+
+  zoomInVideo() {
+    const currentZoom =
+      this.state.videoZoom || 1;
+
+    this.setZoomAroundViewportCenter(
+      "video-overlay",
+      "videoZoom",
+      Math.min(currentZoom + 0.25, 3)
+    );
+  }
+
+  zoomOutVideo() {
+    const currentZoom =
+      this.state.videoZoom || 1;
+
+    this.setZoomAroundViewportCenter(
+      "video-overlay",
+      "videoZoom",
+      Math.max(currentZoom - 0.25, 0.5)
+    );
+  }
+
+  resetVideoZoom() {
+    this.setZoomAroundViewportCenter(
+      "video-overlay",
+      "videoZoom",
+      1
+    );
+  }
+
+  zoomInLightbox() {
+    const currentZoom =
+      this.state.lightboxZoom || 1;
+
+    this.setState({
+      lightboxZoom: Math.min(
+        currentZoom + 0.25,
+        3
+      )
+    });
+  }
+
+  zoomOutLightbox() {
+    const currentZoom =
+      this.state.lightboxZoom || 1;
+
+    this.setState({
+      lightboxZoom: Math.max(
+        currentZoom - 0.25,
+        0.5
+      )
+    });
+  }
+
+  resetLightboxZoom() {
+    this.setState({
+      lightboxZoom: 1
+    });
+  }
+
+  renderVals() {
+    const zoom =
+      this.state.lightboxZoom || 1;
+
+    const baseWidth =
+      this.state.lightboxBaseWidth || 62;
+
+    const videoZoom =
+      this.state.videoZoom || 1;
+
+    const slidesZoom =
+      this.state.slidesZoom || 1;
+
+    return {
+      lightboxDisplay:
+        this.state.lightboxOpen
+          ? "block"
+          : "none",
+
+      videoDisplay:
+        this.state.videoOpen
+          ? "block"
+          : "none",
+
+      slidesDisplay:
+        this.state.slidesOpen
+          ? "block"
+          : "none",
+
+      slidesSrc:
+        this.state.slidesSrc,
+
+      slidesTitle:
+        this.state.slidesTitle,
+
+      slidesFramePointerEvents:
+        this.state.slidesTitle === "RAG Project Flyer" &&
+        slidesZoom <= 1
+          ? "auto"
+          : "none",
+
+      slidesZoomLabel:
+        `${Math.round(slidesZoom * 100)}%`,
+
+      slidesModalWidth:
+        `${90 * slidesZoom}vw`,
+
+      slidesModalHeight:
+        `calc(${Math.round(100 * slidesZoom)}vh - ${Math.round(118 * slidesZoom)}px)`,
+
+      zoomInSlides:
+        (e) => {
+          e.stopPropagation();
+          this.zoomInSlides();
+        },
+
+      zoomOutSlides:
+        (e) => {
+          e.stopPropagation();
+          this.zoomOutSlides();
+        },
+
+      resetSlidesZoom:
+        (e) => {
+          e.stopPropagation();
+          this.resetSlidesZoom();
+        },
+
+      openConstructionSlides:
+        (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          this.openSlides(
+            "./assets/Construction%20Bidding%20Project%20Slides.pdf#page=1&view=Fit&toolbar=0&navpanes=0&scrollbar=0",
+            "Construction Bidding Project Slides"
+          );
+        },
+
+      openCixSlides:
+        (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          this.openSlides(
+            "./assets/CIX%20Project%20Slides.pdf#page=1&view=Fit&toolbar=0&navpanes=0&scrollbar=0",
+            "Healthcare AI Competitive Intelligence Slides"
+          );
+        },
+
+      openDbsSlides:
+        (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          this.openSlides(
+            "./assets/DBS%20QDII%20Project%20Slide.pdf#page=1&view=Fit&toolbar=0&navpanes=0&scrollbar=0",
+            "DBS Private Banking Portfolio Analytics"
+          );
+        },
+
+      openFlyer:
+        (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          this.openSlides(
+            "./assets/Clinical%20Note%20Flyer.pdf?v=71f91a79#page=1&view=Fit&toolbar=0&navpanes=0&scrollbar=0",
+            "RAG Project Flyer",
+            1.75
+          );
+        },
+
+      closeSlides:
+        (e) => {
+          if (e) {
+            e.stopPropagation();
+          }
+          this.closeSlides();
+        },
+
+      videoRef:
+        this.videoRef,
+
+      videoControlDisplay:
+        this.state.videoPlaying
+          ? "none"
+          : "block",
+
+      videoZoomLabel:
+        `${Math.round(videoZoom * 100)}%`,
+
+      videoModalWidth:
+        `${90 * videoZoom}vw`,
+
+      videoScrollWidth:
+        `${Math.max(100, 90 * videoZoom + 10)}vw`,
+
+      toggleVideo:
+        (e) => {
+          if (e) {
+            e.stopPropagation();
+          }
+
+          this.toggleVideo();
+        },
+
+      videoEnded:
+        () => this.videoEnded(),
+
+      zoomInVideo:
+        (e) => {
+          e.stopPropagation();
+          this.zoomInVideo();
+        },
+
+      zoomOutVideo:
+        (e) => {
+          e.stopPropagation();
+          this.zoomOutVideo();
+        },
+
+      resetVideoZoom:
+        (e) => {
+          e.stopPropagation();
+          this.resetVideoZoom();
+        },
+
+      openVideo:
+        (e) => {
+          if (e) {
+            e.stopPropagation();
+          }
+
+          this.openVideo();
+        },
+
+      closeVideo:
+        (e) => {
+          if (e) {
+            e.stopPropagation();
+          }
+
+          this.closeVideo();
+        },
+
+      lightboxImgWidth:
+        `${baseWidth * zoom}vw`,
+
+      lightboxZoomLabel:
+        `${Math.round(zoom * 100)}%`,
+
+      lightboxImgRef:
+        this.imgRef,
+
+      closeLightbox:
+        (e) => {
+          if (e) {
+            e.stopPropagation();
+          }
+
+          this.closeLightbox();
+        },
+
+      zoomInLightbox:
+        (e) => {
+          e.stopPropagation();
+          this.zoomInLightbox();
+        },
+
+      zoomOutLightbox:
+        (e) => {
+          e.stopPropagation();
+          this.zoomOutLightbox();
+        },
+
+      resetLightboxZoom:
+        (e) => {
+          e.stopPropagation();
+          this.resetLightboxZoom();
+        },
+
+      openGpa:
+        () => this.openLightbox("proof-gpa"),
+
+      openCert:
+        () => this.openLightbox("proof-cert"),
+
+      openCover:
+        () => this.openLightbox("proof-cover"),
+
+      startPanSlides:
+        (e) => this.startPan(e, "slides-overlay"),
+
+      startPanLightbox:
+        (e) => this.startPan(e, "lightbox-overlay"),
+
+      movePan:
+        (e) => this.movePan(e),
+
+      endPan:
+        (e) => this.endPan(e),
+
+      stopPropagation:
+        (e) => e.stopPropagation()
+    };
+  }
+}
+</script>
+
+</body>
+</html>
